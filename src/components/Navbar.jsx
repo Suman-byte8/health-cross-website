@@ -1,13 +1,14 @@
 import { useState } from 'react'
+import logo from '../assets/logo.webp'
 import {
   ChevronDown,
-  Cross,
   HeartHandshake,
   Menu,
   MessageCircle,
   Phone,
   ShieldPlus,
   Stethoscope,
+  X,
 } from 'lucide-react'
 
 const navLinks = [
@@ -30,43 +31,37 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-white/85 backdrop-blur-lg border-b border-sage/40 shadow-sm">
+    <header className="fixed inset-x-0 top-0 z-50 bg-white/85 backdrop-blur-lg border-b border-gray-200/60 shadow-sm">
       <div className="mx-auto flex max-w-[1180px] items-center justify-between px-4 py-3 lg:px-6">
         <a href="#home" className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-forest text-white shadow-sm">
-            <Cross className="h-5 w-5" />
-          </div>
-          <div className="leading-tight">
-            <div className="text-sm font-semibold tracking-tight text-forest">Health Cross</div>
-            <div className="text-[10px] uppercase tracking-[0.16em] text-healthcare">ORGANIZATION</div>
-          </div>
+          <img src={logo} alt="Health Cross Organization" className="h-10 w-auto" />
         </a>
 
-        <nav className="hidden items-center gap-1 text-[13.5px] font-medium text-charcoal/80 lg:flex">
+        <nav className="hidden items-center gap-1 text-[13.5px] font-medium text-[#1a1a1a]/80 lg:flex">
           {navLinks.slice(0, 4).map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="nav-link px-3 py-2 rounded-full hover:bg-sage/60 transition relative group"
+              className="px-3 py-2 rounded-full hover:bg-[#e5f3ef] transition relative group"
             >
               {item.label}
-              <span className="absolute left-3 right-3 -bottom-0.5 h-[2px] bg-healthcare scale-x-0 group-hover:scale-x-100 transition origin-left" />
+              <span className="absolute left-3 right-3 -bottom-0.5 h-[2px] bg-[#0d7055] scale-x-0 group-hover:scale-x-100 transition origin-left" />
             </a>
           ))}
           <div className="relative group">
-            <button className="flex items-center gap-1 px-3 py-2 rounded-full hover:bg-sage/60 transition">
+            <button className="flex items-center gap-1 px-3 py-2 rounded-full hover:bg-[#e5f3ef] transition">
               Services <ChevronDown className="h-4 w-4 transition group-hover:-rotate-180" />
             </button>
-            <div className="absolute left-0 top-full mt-3 w-60 rounded-2xl bg-white/95 border border-sage/80 p-2 shadow-xl opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 -translate-y-2">
+            <div className="absolute left-0 top-full mt-3 w-60 rounded-2xl bg-white/95 border border-gray-200 p-2 shadow-xl opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 -translate-y-2">
               {serviceItems.map((item) => {
                 const Icon = item.icon
                 return (
                   <a
                     key={item.label}
                     href={item.href}
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-charcoal transition hover:bg-sage"
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-[#1a1a1a] transition hover:bg-[#e5f3ef]"
                   >
-                    <Icon className="h-4 w-4 text-healthcare" />
+                    <Icon className="h-4 w-4 text-[#0d7055]" />
                     {item.label}
                   </a>
                 )
@@ -77,7 +72,7 @@ export default function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className="nav-link px-3 py-2 rounded-full hover:bg-sage/60 transition"
+              className="px-3 py-2 rounded-full hover:bg-[#e5f3ef] transition"
             >
               {item.label}
             </a>
@@ -87,9 +82,9 @@ export default function Navbar() {
         <div className="hidden items-center gap-3 lg:flex">
           <a
             href="tel:+917439036203"
-            className="hidden xl:inline-flex items-center gap-2 text-sm font-semibold text-forest"
+            className="hidden xl:inline-flex items-center gap-2 text-sm font-semibold text-[#0d7055]"
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sage text-healthcare">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e5f3ef] text-[#0d7055]">
               <Phone className="h-4 w-4" />
             </span>
             74390 36203
@@ -98,45 +93,43 @@ export default function Navbar() {
             href="https://wa.me/919732443744"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-forest px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(11,59,46,0.18)] transition hover:bg-[#0f4a3a]"
+            className="inline-flex items-center gap-2 rounded-full bg-[#0d7055] px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:bg-[#0a5243]"
           >
             <MessageCircle className="h-4 w-4" /> WhatsApp Us
           </a>
         </div>
 
         <button
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-forest text-white lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#0d7055] text-white lg:hidden"
           onClick={() => setMobileOpen((value) => !value)}
           aria-label="Toggle mobile menu"
         >
-          {mobileOpen ? <Cross className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
-      <div className={`${mobileOpen ? 'block' : 'hidden'} lg:hidden border-t border-sage bg-white/95 backdrop-blur-xl`}>
+      <div className={`${mobileOpen ? 'block' : 'hidden'} lg:hidden border-t border-gray-200 bg-white/95 backdrop-blur-xl`}>
         <div className="space-y-1 px-4 py-4">
           {navLinks.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setMobileOpen(false)}
-              className="block rounded-xl px-3 py-2 text-sm font-medium text-charcoal transition hover:bg-sage"
+              className="block rounded-xl px-3 py-2 text-sm font-medium text-[#1a1a1a] transition hover:bg-[#e5f3ef]"
             >
               {item.label}
             </a>
           ))}
-          <details className="group rounded-xl" open={false}>
-            <summary className="flex items-center justify-between rounded-xl px-3 py-2 text-sm font-medium hover:bg-sage cursor-pointer">
+          <details className="group rounded-xl">
+            <summary className="flex items-center justify-between rounded-xl px-3 py-2 text-sm font-medium hover:bg-[#e5f3ef] cursor-pointer">
               Services <ChevronDown className="h-4 w-4 transition group-open:-rotate-180" />
             </summary>
-            <div className="space-y-1 px-4 py-2 text-sm text-charcoal/80">
+            <div className="space-y-1 px-4 py-2 text-sm text-[#1a1a1a]/80">
               {serviceItems.map((item) => {
                 const Icon = item.icon
                 return (
-                  <a key={item.label} href={item.href} className="block rounded-xl px-2 py-2 hover:bg-sage transition">
-                    <span className="mr-2 inline-flex h-4 w-4 items-center justify-center text-healthcare">
-                      <Icon className="h-4 w-4" />
-                    </span>
+                  <a key={item.label} href={item.href} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 rounded-xl px-2 py-2 hover:bg-[#e5f3ef] transition">
+                    <Icon className="h-4 w-4 text-[#0d7055]" />
                     {item.label}
                   </a>
                 )
@@ -147,13 +140,13 @@ export default function Navbar() {
             href="https://wa.me/919732443744"
             target="_blank"
             rel="noreferrer"
-            className="mt-3 flex items-center justify-center gap-2 rounded-full bg-forest px-4 py-3 text-sm font-semibold text-white"
+            className="mt-3 flex items-center justify-center gap-2 rounded-full bg-[#0d7055] px-4 py-3 text-sm font-semibold text-white"
           >
             <MessageCircle className="h-4 w-4" /> WhatsApp Us
           </a>
           <a
             href="tel:+917439036203"
-            className="flex items-center justify-center gap-2 rounded-full border border-forest px-4 py-3 text-sm font-semibold text-forest"
+            className="flex items-center justify-center gap-2 rounded-full border border-[#0d7055] px-4 py-3 text-sm font-semibold text-[#0d7055]"
           >
             <Phone className="h-4 w-4" /> Call 74390 36203
           </a>
