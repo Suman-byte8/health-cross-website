@@ -1,3 +1,9 @@
+import serviceImg1 from '../assets/service_image_1.png'
+import serviceImg2 from '../assets/service_image_2.png'
+import serviceImg3 from '../assets/service_image_3.png'
+import aboutImg from '../assets/about_image.png'
+
+
 import {
   Activity,
   Ambulance,
@@ -41,8 +47,7 @@ export const benefitsData = [
 
 export const serviceCardsData = [
   {
-    image:
-      "https://images.unsplash.com/photo-1582750433449-648ed127bb54?q=80&w=800&auto=format&fit=crop",
+    image:serviceImg1,
     badge: "Elder Care",
     title: "Elder Care at Home",
     description:
@@ -50,8 +55,7 @@ export const serviceCardsData = [
     icon: Users,
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop",
+    image:serviceImg2,
     badge: "Critical Care",
     title: "Critical Care Setup",
     description:
@@ -59,8 +63,7 @@ export const serviceCardsData = [
     icon: Activity,
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800&auto=format&fit=crop",
+    image:serviceImg3,
     badge: "Physiotherapy",
     title: "Physiotherapy at Home",
     description: "Rehab and mobility support tailored to recovery goals.",

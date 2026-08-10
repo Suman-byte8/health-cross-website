@@ -1,26 +1,27 @@
 import { Award, Check } from "lucide-react";
 import { aboutItemsData } from "../../data/homeData";
+import aboutImg from "../../assets/about_image.png";
 
 const AboutSection = () => {
   return (
     <section id="about" className="py-10 lg:py-14">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
         <div className="grid gap-6 lg:grid-cols-2 bg-white rounded-[24px] border border-gray-200 shadow-lg overflow-hidden">
-          <div className="relative p-4 sm:p-6">
-            <div className="relative overflow-hidden rounded-[20px] h-[360px] lg:h-[460px]">
+          <div className="relative p-4 sm:p-6 flex flex-col justify-center">
+            <div className="relative overflow-hidden rounded-[20px] aspect-[3/4] lg:aspect-auto lg:h-full min-h-[360px] lg:min-h-[480px] bg-[#f4f8f6]">
               <img
-                src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?q=80&w=900&auto=format&fit=crop"
-                alt="Care team"
-                className="h-full w-full object-cover"
+                src={aboutImg}
+                alt="About Health Cross"
+                className="h-full w-full object-cover transition duration-500"
               />
               <div className="absolute bottom-4 left-4 rounded-2xl bg-white/85 px-4 py-3 shadow-lg backdrop-blur">
                 <div className="flex items-center gap-3">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#0d7055] text-white">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#0d7055] text-white shrink-0">
                     <Award className="h-5 w-5" />
                   </span>
                   <div>
                     <div className="text-sm font-bold">
-                      6+ Years Excellence
+                      3+ Years Excellence
                     </div>
                     <div className="text-xs text-[#1a1a1a]/60">
                       Kolkata's trusted home healthcare
@@ -31,7 +32,7 @@ const AboutSection = () => {
             </div>
           </div>
 
-          <div className="p-6 lg:p-10">
+          <div className="p-6 lg:p-10 flex flex-col justify-center">
             <div className="text-xs font-bold tracking-[0.14em] text-[#0d7055] flex items-center gap-2">
               <span className="h-6 w-[2px] bg-[#0d7055]" /> ABOUT HEALTH CROSS
             </div>

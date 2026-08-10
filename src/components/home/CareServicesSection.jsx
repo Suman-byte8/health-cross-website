@@ -14,28 +14,29 @@ const CareServicesSection = () => {
           </h2>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3">
           {serviceCardsData.map((card) => {
             const BadgeIcon = card.icon;
             return (
               <article
                 key={card.title}
-                className="group overflow-hidden rounded-[20px] border border-gray-200 bg-white shadow-sm transition hover:-translate-y-2 hover:shadow-xl"
+                className="group flex flex-col overflow-hidden rounded-[20px] border border-gray-200 bg-white shadow-sm transition hover:-translate-y-2 hover:shadow-xl"
               >
-                <div className="relative h-[200px] overflow-hidden">
+                {/* Increased image area size to aspect-[3/4] to fit the full height of portrait images */}
+                <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#f4f8f6]">
                   <img
                     src={card.image}
                     alt={card.badge}
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                    className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
                   />
-                  <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-xs font-bold backdrop-blur text-[#1a1a1a]">
+                  <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-xs font-bold backdrop-blur text-[#1a1a1a] shadow-sm">
                     <BadgeIcon className="h-3.5 w-3.5 text-[#0d7055]" />{" "}
                     {card.badge}
                   </span>
                 </div>
-                <div className="p-5">
+                <div className="p-5 flex flex-col flex-1">
                   <h3 className="text-[17px] font-bold">{card.title}</h3>
-                  <p className="mt-1.5 text-sm leading-5 text-[#1a1a1a]/65">
+                  <p className="mt-1.5 text-sm leading-5 text-[#1a1a1a]/65 flex-1">
                     {card.description}
                   </p>
                   <a
