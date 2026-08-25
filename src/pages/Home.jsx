@@ -2,7 +2,7 @@ import HeroSection from "../components/home/HeroSection";
 import BenefitsSection from "../components/home/BenefitsSection";
 import CareServicesSection from "../components/home/CareServicesSection";
 import AboutSection from "../components/home/AboutSection";
-import PricingSection from "../components/home/PricingSection";
+// import PricingSection from "../components/home/PricingSection";
 import TeamSection from "../components/home/TeamSection";
 import StatsSection from "../components/home/StatsSection";
 import ServicesGrid from "../components/home/ServicesGrid";
@@ -15,7 +15,7 @@ export default function Home() {
       <BenefitsSection />
       <CareServicesSection />
       <AboutSection />
-      <PricingSection />
+      {/* <PricingSection /> */}
       <TeamSection />
       <StatsSection />
       <ServicesGrid />
