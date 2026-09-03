@@ -1,19 +1,5 @@
 import { doctors } from "../../data/doctors";
 
-function getInitials(name) {
-  const clean = name.replace(/^Dr\.?\s*/i, "");
-  const parts = clean.trim().split(/\s+/);
-  const first = parts[0]?.[0] || "";
-  const last = parts.length > 1 ? parts[parts.length - 1][0] : "";
-  return (first + last).toUpperCase();
-}
-
-const AVATAR_STYLES = [
-  "from-[#0d7055] to-[#146B50]",
-  "from-[#146B50] to-[#0B3B2E]",
-  "from-[#CDAE72] to-[#a8894f]",
-];
-
 const ClinicalTeamSection = () => {
   return (
     <section id="wellness" className="py-8 lg:py-10">
@@ -31,17 +17,12 @@ const ClinicalTeamSection = () => {
         </div>
 
         <div className="mt-8 grid gap-4 grid-cols-2 sm:grid-cols-3">
-          {doctors.map((doctor, index) => (
+          {doctors.map((doctor) => (
             <article
               key={doctor.name}
               className="rounded-[20px] border border-gray-200 bg-white p-5 text-center shadow-sm transition hover:-translate-y-2 hover:shadow-md"
             >
-              <div
-                className={`mx-auto mb-3 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br text-lg font-bold text-white ${AVATAR_STYLES[index % AVATAR_STYLES.length]}`}
-                aria-hidden="true"
-              >
-                {getInitials(doctor.name)}
-              </div>
+              <span className="mx-auto mb-3 block h-[2px] w-8 bg-[#0d7055]" aria-hidden="true" />
               <h3 className="font-bold text-sm leading-tight">{doctor.name}</h3>
               <div className="mt-1 text-xs font-semibold text-[#0d7055]">
                 {doctor.specialization}
