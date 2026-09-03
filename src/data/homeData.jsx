@@ -1,8 +1,6 @@
 import serviceImg1 from '../assets/service_image_1.png'
 import serviceImg2 from '../assets/service_image_2.png'
 import serviceImg3 from '../assets/service_image_3.png'
-import aboutImg from '../assets/about_image.png'
-
 
 import {
   Activity,
@@ -10,13 +8,17 @@ import {
   Airplay,
   Bed,
   Brain,
+  ClipboardList,
+  Clock3,
   Droplets,
   GraduationCap,
   Heart,
+  HeartHandshake,
   HeartPulse,
   PersonStanding,
   Phone,
   Scan,
+  SlidersHorizontal,
   Stethoscope,
   Syringe,
   TestTube,
@@ -36,7 +38,7 @@ export const benefitsData = [
   {
     icon: GraduationCap,
     label: "Clinical Experts",
-    text: "MD, BAMS and licensed therapists with verified credentials.",
+    text: "MD physicians and licensed therapists with verified credentials.",
   },
   {
     icon: HeartPulse,
@@ -53,6 +55,7 @@ export const serviceCardsData = [
     description:
       "Daily assistance, medication support and companionship for seniors.",
     icon: Users,
+    highlights: ["Daily living assistance", "Medication support", "Companionship for seniors"],
   },
   {
     image:serviceImg2,
@@ -61,6 +64,7 @@ export const serviceCardsData = [
     description:
       "ICU-at-home with monitoring, ventilator support and specialist nurses.",
     icon: Activity,
+    highlights: ["Continuous monitoring", "Ventilator support", "Specialist nurses"],
   },
   {
     image:serviceImg3,
@@ -68,28 +72,34 @@ export const serviceCardsData = [
     title: "Physiotherapy at Home",
     description: "Rehab and mobility support tailored to recovery goals.",
     icon: PersonStanding,
+    highlights: ["Rehabilitation therapy", "Mobility support", "Tailored to recovery goals"],
   },
 ];
 
 export const aboutItemsData = [
   {
+    icon: ClipboardList,
     label: "Personalized Care Plans",
     description:
       "Tailored to medical history, lifestyle and family preferences.",
   },
   {
+    icon: GraduationCap,
     label: "Experienced Professionals",
     description: "Doctors, nurses and therapists with verified qualifications.",
   },
   {
+    icon: Clock3,
     label: "Reliable Support, Anytime",
     description: "24/7 helpline, WhatsApp coordination and rapid response.",
   },
   {
+    icon: SlidersHorizontal,
     label: "Flexible Options",
     description: "Hourly, daily, monthly and subscription plans.",
   },
   {
+    icon: HeartHandshake,
     label: "Quality Coordination",
     description: "One coordinator, regular updates and family counselling.",
   },
@@ -135,39 +145,8 @@ export const plansData = [
   },
 ];
 
-export const teamData = [
-  {
-    name: "Dr. Ashik Ikbal",
-    role: "MD",
-    label: "General Physician • Home Visits",
-    image:
-      "https://i.pinimg.com/736x/09/21/fc/0921fc87aa989330b8d403014bf4f340.jpg",
-  },
-  {
-    name: "Dr. Inayet Kabir",
-    role: "BAMS",
-    label: "Ayurvedic & Wellness Care",
-    image:
-      "https://i.pinimg.com/736x/09/21/fc/0921fc87aa989330b8d403014bf4f340.jpg",
-  },
-  {
-    name: "Dr. Selim Aktar",
-    role: "BAMS",
-    label: "Ayurvedic & Wellness Care",
-    image:
-      "https://i.pinimg.com/736x/09/21/fc/0921fc87aa989330b8d403014bf4f340.jpg",
-  },
-  {
-    name: "Dr. Neha Sultana",
-    image:
-      "https://i.pinimg.com/736x/09/21/fc/0921fc87aa989330b8d403014bf4f340.jpg",
-  },
-  {
-    name: "Dr. Neha Shabnam",
-    image:
-      "https://i.pinimg.com/736x/09/21/fc/0921fc87aa989330b8d403014bf4f340.jpg",
-  },
-];
+// Clinical team roster now lives in `src/data/doctors.jsx` (no photos, per
+// client requirement) and is consumed by the Clinical Team section directly.
 
 export const statsData = [
   { value: "1,000+", label: "Patients served" },

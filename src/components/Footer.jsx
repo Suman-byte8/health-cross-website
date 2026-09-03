@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import {
   Clock,
   Facebook,
@@ -11,6 +12,15 @@ import {
 
 import logo from '../assets/logo.webp'
 
+const quickLinks = [
+  { label: 'Home', to: '/' },
+  { label: 'About Us', to: '/about' },
+  { label: 'Services', to: '/services' },
+  { label: 'Subscription', to: '/subscription' },
+  { label: 'Clinical Team', to: '/#wellness' },
+  { label: 'Blog', to: '/vlogs' },
+  { label: 'Contact', to: '/contact' },
+]
 
 export default function Footer() {
   return (
@@ -18,9 +28,9 @@ export default function Footer() {
       <div className="mx-auto max-w-[1180px] space-y-8 px-4 py-10 sm:px-6">
         <div className="grid gap-8 lg:grid-cols-[1.3fr_0.7fr_0.9fr_1fr]">
           <div>
-            <a href="#home" className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-3">
               <img src={logo} alt="Health Cross Organization" className="h-16 w-auto"  style={{ filter: 'brightness(0) invert(1)' }} />
-            </a>
+            </Link>
             <p className="mt-4 max-w-[340px] text-sm leading-6 text-white/60">
               Health Cross Organization provides expert home healthcare services in Kolkata, delivering compassionate and professional medical care right at your doorstep. Our services include elderly care at home, home nursing care, critical care support, palliative care, dementia care, and more — all tailored to individual patient needs.We focus on improving quality of life through personalized treatment plans, regular monitoring, and dedicated support. With our trusted home healthcare solutions in North Kolkata, patients receive comfort, independence, and peace of mind while recovering safely at home.
             </p>
@@ -46,11 +56,11 @@ export default function Footer() {
           <div>
             <div className="text-sm font-semibold text-white">Quick Links</div>
             <ul className="mt-4 space-y-2.5 text-sm text-white/60">
-              {['Home', 'About Us', 'Subscription', 'Wellness', 'Contact', 'Blog'].map((label) => (
+              {quickLinks.map(({ label, to }) => (
                 <li key={label}>
-                  <a href={`#${label.toLowerCase().replace(/\s+/g, '-')}`} className="transition hover:text-white">
+                  <Link to={to} className="transition hover:text-white">
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -68,9 +78,9 @@ export default function Footer() {
                 'Diagnostics — ECG, X-Ray',
               ].map((label) => (
                 <li key={label}>
-                  <a href="#services-grid" className="transition hover:text-white">
+                  <Link to="/services#services-grid" className="transition hover:text-white">
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

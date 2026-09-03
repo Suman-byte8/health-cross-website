@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, HeartHandshake, MapPin, Star, Clock3 } from "lucide-react";
 import officeInside from "../../assets/office_inside.png";
 import { heroWords } from "../../data/homeData";
@@ -48,12 +49,12 @@ const HeroSection = () => {
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              <a
-                href="#services-grid"
+              <Link
+                to="/services"
                 className="inline-flex items-center gap-2 rounded-full bg-[#0d7055] px-7 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:bg-[#0a5243]"
               >
                 Explore More <ArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
               <a
                 href="https://wa.me/919732443744"
                 target="_blank"
