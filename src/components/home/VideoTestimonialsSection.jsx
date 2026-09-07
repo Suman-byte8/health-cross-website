@@ -1,20 +1,26 @@
 import { useMemo, useState } from "react";
-import { Clapperboard, Play } from "lucide-react";
+import { Play } from "lucide-react";
 import { videoTestimonials } from "../../data/videoTestimonials";
 import { mediaVideos } from "../../data/mediaVideos";
 import PlaceholderMedia, { PlaceholderBadge } from "../common/PlaceholderMedia";
 import Modal from "../common/Modal";
+import Slider from "../common/Slider";
 
-const FILTERS = [
-  { key: "all", label: "All Videos" },
-  { key: "testimonial", label: "Patient Testimonials" },
-  { key: "clip", label: "Clinic & Events" },
-];
+const FILTER_LABELS = {
+  testimonial: "Patient Testimonials",
+  clip: "Clinic & Events",
+};
 
 // One reusable gallery consumes both patient testimonials and general video
 // clips (hospital footage, events, activities) — new items can be added to
-// either data file without any component changes.
-const allVideos = [...videoTestimonials, ...mediaVideos];
+// either data file without any component changes. Placeholder entries (no
+// real video supplied yet) stay in the data files as a checklist for the
+// client, but only real videos are ever rendered here — no "coming soon"
+// filler card is shown alongside actual content.
+const rawVideos = [...videoTestimonials, ...mediaVideos];
+const allVideos = rawVideos.filter((item) => item.video && !item.placeholder);
+const hasPendingPlaceholders = rawVideos.some((item) => item.placeholder);
+const availableTypes = [...new Set(allVideos.map((item) => item.type))];
 
 const VideoTestimonialsSection = () => {
   const [filter, setFilter] = useState("all");
@@ -24,6 +30,8 @@ const VideoTestimonialsSection = () => {
     () => (filter === "all" ? allVideos : allVideos.filter((v) => v.type === filter)),
     [filter]
   );
+
+  if (allVideos.length === 0) return null;
 
   return (
     <section id="testimonials" className="py-8 lg:py-10">
@@ -37,69 +45,71 @@ const VideoTestimonialsSection = () => {
               Video testimonials & clinic moments
             </h2>
           </div>
-          <PlaceholderBadge>Videos to be supplied by client</PlaceholderBadge>
+          {hasPendingPlaceholders && (
+            <PlaceholderBadge>More videos to be supplied by client</PlaceholderBadge>
+          )}
         </div>
 
-        <div className="mt-5 flex flex-wrap gap-2">
-          {FILTERS.map((item) => (
-            <button
-              key={item.key}
-              type="button"
-              onClick={() => setFilter(item.key)}
-              className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
-                filter === item.key
-                  ? "bg-[#0d7055] text-white"
-                  : "bg-[#f4f8f6] text-[#1a1a1a]/70 hover:bg-[#e5f3ef]"
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
+        {availableTypes.length > 1 && (
+          <div className="mt-5 flex flex-wrap gap-2">
+            {["all", ...availableTypes].map((key) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => setFilter(key)}
+                className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
+                  filter === key
+                    ? "bg-[#0d7055] text-white"
+                    : "bg-[#f4f8f6] text-[#1a1a1a]/70 hover:bg-[#e5f3ef]"
+                }`}
+              >
+                {key === "all" ? "All Videos" : FILTER_LABELS[key] || key}
+              </button>
+            ))}
+          </div>
+        )}
 
-        <div className="mt-6 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <Slider className="mt-6">
           {visibleVideos.map((item, index) => (
             <article
               key={index}
-              className="overflow-hidden rounded-[20px] border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              data-slide
+              className="w-[300px] shrink-0 snap-start overflow-hidden rounded-[20px] border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl sm:w-[360px] lg:w-[400px]"
             >
               <button
                 type="button"
-                onClick={() => item.video && setActiveVideo(item)}
-                disabled={!item.video}
-                aria-label={item.video ? `Play video: ${item.title}` : `${item.title} — video coming soon`}
-                className="group relative block w-full disabled:cursor-not-allowed"
+                onClick={() => setActiveVideo(item)}
+                aria-label={`Play video: ${item.title}`}
+                className="group relative block w-full"
               >
                 {item.thumbnail ? (
                   <img
                     src={item.thumbnail}
                     alt={item.title}
                     loading="lazy"
-                    className="aspect-video w-full object-cover transition duration-500 group-hover:scale-105"
+                    className="aspect-[3/4] w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                 ) : (
-                  <PlaceholderMedia icon={Clapperboard} label="Video coming soon" aspect="aspect-video" />
+                  <PlaceholderMedia label="Preview coming soon" aspect="aspect-[3/4]" />
                 )}
-                {item.video && (
-                  <span className="absolute inset-0 flex items-center justify-center">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-[#0d7055] shadow-lg transition group-hover:scale-110">
-                      <Play className="h-5 w-5 fill-current" />
-                    </span>
+                <span className="absolute inset-0 flex items-center justify-center">
+                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-[#0d7055] shadow-lg transition group-hover:scale-110">
+                    <Play className="h-6 w-6 fill-current" />
                   </span>
-                )}
+                </span>
               </button>
-              <div className="p-4">
-                <h3 className="text-[14px] font-bold leading-tight">{item.title}</h3>
+              <div className="p-5">
+                <h3 className="text-[15px] font-bold leading-tight">{item.title}</h3>
                 {item.name && (
                   <div className="mt-1 text-xs font-semibold text-[#0d7055]">{item.name}</div>
                 )}
                 {item.description && (
-                  <p className="mt-1 text-xs leading-5 text-[#1a1a1a]/60">{item.description}</p>
+                  <p className="mt-1.5 text-xs leading-5 text-[#1a1a1a]/60">{item.description}</p>
                 )}
               </div>
             </article>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <Modal

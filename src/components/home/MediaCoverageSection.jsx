@@ -57,7 +57,7 @@ const MediaCoverageSection = () => {
                   src={item.image}
                   alt={item.title}
                   loading="lazy"
-                  className="aspect-[4/3] w-full object-cover"
+                  className="aspect-[4/3] w-full object-cover object-top"
                 />
               ) : (
                 <PlaceholderMedia icon={Newspaper} label="Clipping image coming soon" />

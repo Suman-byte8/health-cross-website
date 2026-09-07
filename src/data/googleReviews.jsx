@@ -19,32 +19,44 @@ export const googleRatingSummary = {
     "https://www.google.com/maps/search/?api=1&query=Health+Cross+Organization+68%2F44+Jessore+Road+Kolkata",
 };
 
-// Every entry below is a clearly-marked placeholder (placeholder: true).
-// Replace name/text/date with the client's actual Google reviews — do not
-// treat this sample copy as real testimonial content.
+// Real Google reviews supplied by the client. Text is reproduced as given,
+// with only light punctuation/capitalization cleanup for readability — no
+// wording added, removed, or reworded. Add further reviews here as the
+// client supplies them.
 export const googleReviews = [
   {
-    name: "Reviewer name to be supplied",
+    name: "Dipwanita Chatterjee",
     rating: 5,
-    text: "Placeholder — replace with an actual Google review supplied by the client.",
+    text: "Dr. Iqbal is a truly genuine and compassionate doctor. He has been taking wonderful care of my elderly parents with immense patience, kindness, and dedication. He always listens carefully, explains everything in simple terms, and never recommends unnecessary treatments. His genuine concern for his patients is evident in every interaction. We are deeply grateful for his care and highly recommend him.",
     date: "",
     source: "Google",
-    placeholder: true,
   },
   {
-    name: "Reviewer name to be supplied",
+    name: "Kunal Singh",
     rating: 5,
-    text: "Placeholder — replace with an actual Google review supplied by the client.",
-    date: "",
+    text: "We have been taking their services for a while now, mostly injections and some medications. Anupam Sasmal, and Health Cross overall, are always reasonable, accommodating, proactive, and helpful, especially given that they come to my house and gets it done.",
+    date: "2 months ago",
     source: "Google",
-    placeholder: true,
   },
   {
-    name: "Reviewer name to be supplied",
+    name: "Abhinoy Mondal",
     rating: 5,
-    text: "Placeholder — replace with an actual Google review supplied by the client.",
+    text: "I'm very happy this organisation is very helpful. Late night service. Thank you Health Cross. Keep grow up. All the best.",
     date: "",
     source: "Google",
-    placeholder: true,
+  },
+  {
+    name: "Subrajyoti Ghosh",
+    rating: 5,
+    text: "Dr Iqbal, Dr. Kabir are very responsible, prompt in acting on medical reports. They are truly compassionate. Their caring nature and dedication make treatment highly reliable and trustworthy. Highly recommended.",
+    date: "",
+    source: "Google",
+  },
+  {
+    name: "Arpita Ghosal",
+    rating: 5,
+    text: "Every helping hand in healthcare brings a little more comfort to someone in need. Dr Iqbal and Kabir are such a humble person I had ever met, they had taken care of my parents like their own. Their service for the Senior citizen is really very satisfying, any service regarding health I can fully rely on them.",
+    date: "",
+    source: "Google",
   },
 ];

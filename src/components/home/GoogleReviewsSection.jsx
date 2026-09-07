@@ -1,6 +1,7 @@
 import { ExternalLink, Quote, Star } from "lucide-react";
 import { googleRatingSummary, googleReviews } from "../../data/googleReviews";
 import { PlaceholderBadge } from "../common/PlaceholderMedia";
+import Slider from "../common/Slider";
 
 const StarRow = ({ count = 5, className = "h-4 w-4" }) => (
   <div className="flex gap-0.5" aria-hidden="true">
@@ -63,11 +64,12 @@ const GoogleReviewsSection = () => {
               )}
             </div>
 
-            <div className="grid gap-4 md:grid-cols-3">
+            <Slider>
               {googleReviews.map((review, index) => (
                 <article
                   key={index}
-                  className="flex flex-col rounded-[18px] border border-gray-200 bg-[#fafbf9] p-5"
+                  data-slide
+                  className="flex w-[280px] shrink-0 snap-start flex-col rounded-[18px] border border-gray-200 bg-[#fafbf9] p-5 sm:w-[320px]"
                 >
                   <Quote className="h-5 w-5 text-[#0d7055]/40" aria-hidden="true" />
                   <p className="mt-2 flex-1 text-sm leading-6 text-[#1a1a1a]/75">
@@ -84,7 +86,7 @@ const GoogleReviewsSection = () => {
                   </div>
                 </article>
               ))}
-            </div>
+            </Slider>
           </div>
         </div>
       </div>
