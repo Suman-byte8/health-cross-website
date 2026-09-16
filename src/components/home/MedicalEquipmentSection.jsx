@@ -19,14 +19,16 @@ const MedicalEquipmentSection = () => {
               Hospital-grade care, at home
             </h2>
           </div>
-          <PlaceholderBadge>Photos to be supplied by client</PlaceholderBadge>
+          {medicalEquipment.some((item) => !item.image) && (
+            <PlaceholderBadge>Photos to be supplied by client</PlaceholderBadge>
+          )}
         </div>
         <p className="mt-2 max-w-2xl text-sm text-[#1a1a1a]/60">
-          Equipment photographs and detailed specifications will be added by
-          our clinical team. The layout below is ready for those images.
+          A look at the equipment our clinical team brings into your home for
+          monitoring, respiratory support and patient care.
         </p>
 
-        <div className="mt-8 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {medicalEquipment.map((item, index) => (
             <article
               key={index}
@@ -43,10 +45,10 @@ const MedicalEquipmentSection = () => {
                     src={item.image}
                     alt={item.name}
                     loading="lazy"
-                    className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105"
+                    className="aspect-video w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                 ) : (
-                  <PlaceholderMedia icon={Stethoscope} label="Equipment photo coming soon" />
+                  <PlaceholderMedia icon={Stethoscope} label="Equipment photo coming soon" aspect="aspect-video" />
                 )}
                 <span className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-[#0d7055] opacity-0 shadow-sm transition group-hover:opacity-100">
                   <ZoomIn className="h-4 w-4" />

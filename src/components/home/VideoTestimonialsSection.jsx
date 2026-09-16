@@ -74,7 +74,7 @@ const VideoTestimonialsSection = () => {
             <article
               key={index}
               data-slide
-              className="w-[300px] shrink-0 snap-start overflow-hidden rounded-[20px] border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl sm:w-[360px] lg:w-[400px]"
+              className="w-[200px] shrink-0 snap-start overflow-hidden rounded-[20px] border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:w-[230px] lg:w-[250px]"
             >
               <button
                 type="button"
@@ -93,18 +93,18 @@ const VideoTestimonialsSection = () => {
                   <PlaceholderMedia label="Preview coming soon" aspect="aspect-[3/4]" />
                 )}
                 <span className="absolute inset-0 flex items-center justify-center">
-                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-[#0d7055] shadow-lg transition group-hover:scale-110">
-                    <Play className="h-6 w-6 fill-current" />
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-[#0d7055] shadow-lg transition group-hover:scale-110">
+                    <Play className="h-4 w-4 fill-current" />
                   </span>
                 </span>
               </button>
-              <div className="p-5">
-                <h3 className="text-[15px] font-bold leading-tight">{item.title}</h3>
+              <div className="p-3.5">
+                <h3 className="text-[13px] font-bold leading-tight">{item.title}</h3>
                 {item.name && (
                   <div className="mt-1 text-xs font-semibold text-[#0d7055]">{item.name}</div>
                 )}
                 {item.description && (
-                  <p className="mt-1.5 text-xs leading-5 text-[#1a1a1a]/60">{item.description}</p>
+                  <p className="mt-1 text-xs leading-5 text-[#1a1a1a]/60">{item.description}</p>
                 )}
               </div>
             </article>

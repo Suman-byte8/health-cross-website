@@ -1,27 +1,31 @@
+import becauseEveryPatientCover from "../assets/blogg/because-every-patient-has-a-story.webp";
+
 // Vlog / blog posts.
 //
-// The client has not yet supplied real write-ups. Rather than invent
-// articles or medical advice, this ships with a single, clearly-labelled
-// sample post that only describes the vlog feature itself — it exercises the
-// listing and detail page templates end to end. Replace/remove it once real
-// posts are supplied, following the same shape.
+// Real write-ups are added here as the client supplies them — each becomes
+// its own page at /vlogs/<slug> via the existing Vlogs/VlogDetail templates,
+// and appears on the /vlogs listing plus the homepage's Latest Vlogs teaser.
 //
 // CMS note: see CMS Integration Points documentation for the future "Vlogs"
 // collection shape.
 export const vlogs = [
   {
-    slug: "sample-vlog-post",
-    title: "Sample Vlog Post — Placeholder Content",
+    slug: "because-every-patient-has-a-story",
+    title: "Because Every Patient Has a Story",
     excerpt:
-      "This is placeholder content previewing the Vlogs layout. Replace it with a real write-up supplied by Health Cross Organization.",
+      "Behind every patient is a family waiting, a loved one worrying, and a person hoping to feel better. At Healthcross, we never forget that.",
     content: [
-      "This sample post exists only to preview how the Vlogs section looks and behaves — the cover image, title, date, category, full article layout and related posts.",
-      "It is not a real article and contains no medical advice. Health Cross Organization will publish real vlog write-ups here, which will replace this placeholder.",
+      "Behind every patient is a family waiting, a loved one worrying, and a person hoping to feel better.",
+      "At Healthcross, we never forget that.",
+      "For us, healthcare is not simply about medicines, reports, or procedures. It is about being there when someone feels vulnerable, frightened, or uncertain. It is about answering the call, arriving when needed, listening patiently, and making people feel that they are not alone.",
+      "Through our Hospital at Your Doorstep service, we bring trusted healthcare closer to you—because sometimes, the most meaningful care is the care that comes to you.",
+      "We believe every patient deserves to be treated with kindness, dignity, patience, and respect—not because they are a customer, but because they are a person.",
+      "And every time someone chooses Healthcross, they place their trust in our hands.",
+      "That trust is not just our responsibility. It is our promise.",
     ],
-    image: null,
-    date: "",
-    category: "Sample",
+    image: becauseEveryPatientCover,
+    date: "September 16, 2026",
+    category: "Our Story",
     author: "",
-    placeholder: true,
   },
 ];
