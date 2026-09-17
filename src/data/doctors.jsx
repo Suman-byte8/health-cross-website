@@ -7,13 +7,20 @@
 // each object below should map to one CMS record (see fields listed in the
 // CMS Integration Points documentation).
 export const doctors = [
+  { name: "Dr. Priyanka Ghosh", specialization: "General Physician, Critical Care Expert" },
   { name: "Dr. Subhadip Gupta", specialization: "Neuro" },
+  { name: "Dr. Selim Akhter", specialization: "General Physician" },
+  { name: "Dr. Neha Shabnam", specialization: "Consultant Dentist" },
   { name: "Dr. Indranil Basak", specialization: "Cardio" },
   { name: "Dr. Kity Sarkar", specialization: "Nephro" },
+  { name: "Dr. Anirban Palik", specialization: "Nephrologist" },
   { name: "Dr. Shahid Aziz", specialization: "Gastro" },
   { name: "Dr. Ashik Ikbal", specialization: "MD, Critical Care Expert" },
-  { name: "Dr. Neha Shabnam", specialization: "Consultant Dentist" },
-  { name: "Dr. Selim Akhter", specialization: "General Physician" },
-  { name: "Dr. Inayat Kabir", specialization: "General Physician" },
   { name: "Dr. Priyadarshini Sannigrahi", specialization: "Paediatrician" },
+  { name: "Dr. Inayat Kabir", specialization: "General Physician and Critical Care Expert" },
+  {
+    name: "Physiotherapist (Speech & Technician)",
+    specialization: "Team member to be confirmed",
+    placeholder: true,
+  },
 ];
