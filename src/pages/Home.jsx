@@ -1,5 +1,7 @@
 import HeroSection from "../components/home/HeroSection";
+import QuickServicesSection from "../components/home/QuickServicesSection";
 import BenefitsSection from "../components/home/BenefitsSection";
+import WhyChooseUsBanner from "../components/home/WhyChooseUsBanner";
 import ClinicalTeamSection from "../components/home/ClinicalTeamSection";
 import MedicalEquipmentSection from "../components/home/MedicalEquipmentSection";
 import StatsSection from "../components/home/StatsSection";
@@ -19,7 +21,9 @@ export default function Home() {
         path="/"
       />
       <HeroSection />
+      <QuickServicesSection />
       <BenefitsSection />
+      <WhyChooseUsBanner />
       <ClinicalTeamSection />
       <MedicalEquipmentSection />
       <StatsSection />

@@ -1,31 +1,25 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Check } from "lucide-react";
 import { serviceCardsData } from "../../data/homeData";
+import SectionHeading from "../common/SectionHeading";
 
 const CareServicesSection = () => {
   return (
-    <section id="care-services" className="py-10">
+    <section id="care-services" className="bg-[#f4f8f6] py-10 lg:py-12">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
-        <div className="mb-6 max-w-2xl">
-          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[#0d7055]">
-            <span className="h-[2px] w-6 bg-[#0d7055]" /> CARE SERVICES
-          </div>
-          <h2 className="mt-2 text-[28px] font-bold tracking-tight lg:text-[34px]">
-            Care built around home
-          </h2>
-          <p className="mt-2 text-sm leading-6 text-[#1a1a1a]/60">
-            Three focused programs, each delivered by trained clinicians and
-            coordinated through a single point of contact.
-          </p>
-        </div>
+        <SectionHeading
+          eyebrow="CARE SERVICES"
+          title="Care built around home"
+          subtitle="Three focused programs, each delivered by trained clinicians and coordinated through a single point of contact."
+        />
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
           {serviceCardsData.map((card) => {
             const BadgeIcon = card.icon;
             return (
               <article
                 key={card.title}
-                className="group flex flex-col overflow-hidden rounded-[20px] border border-gray-200 bg-white shadow-sm transition hover:-translate-y-2 hover:shadow-xl"
+                className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-2 hover:shadow-xl"
               >
                 {/* Increased image area size to aspect-[3/4] to fit the full height of portrait images */}
                 <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#f4f8f6]">
@@ -70,7 +64,7 @@ const CareServicesSection = () => {
           })}
         </div>
 
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-[18px] border border-dashed border-[#0d7055]/25 bg-[#f4f8f6] px-5 py-4">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-dashed border-[#0d7055]/25 bg-[#f4f8f6] px-5 py-4">
           <p className="text-sm text-[#1a1a1a]/70">
             Looking for something specific? We offer 16 home healthcare services in total.
           </p>

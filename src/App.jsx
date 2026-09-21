@@ -9,6 +9,7 @@ import Contact from './pages/Contact.jsx'
 import Vlogs from './pages/Vlogs.jsx'
 import VlogDetail from './pages/VlogDetail.jsx'
 import Footer from './components/Footer.jsx'
+import FloatingActions from './components/common/FloatingActions.jsx'
 
 // Handles both "scroll to top on route change" and "scroll to the target
 // section when a link carries a hash" (e.g. Navbar's Clinical Team link,
@@ -50,6 +51,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <FloatingActions />
     </>
   )
 }

@@ -1,28 +1,37 @@
 import { doctors } from "../../data/doctors";
+import SectionHeading from "../common/SectionHeading";
+
+const initials = (name) =>
+  name
+    .replace(/^Dr\.?\s*/i, "")
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
 
 const ClinicalTeamSection = () => {
   return (
-    <section id="wellness" className="py-8 lg:py-10">
+    <section id="wellness" className="bg-white py-10 lg:py-12">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
-        <div className="text-center max-w-2xl mx-auto">
-          <div className="text-xs font-bold uppercase tracking-[0.14em] text-[#0d7055]">
-            OUR CLINICAL TEAM
-          </div>
-          <h2 className="mt-2 text-[28px] font-bold lg:text-[34px]">
-            Doctors who come home
-          </h2>
-          <p className="mt-2 text-sm text-[#1a1a1a]/60">
-            Verified qualifications only — no inflated titles.
-          </p>
-        </div>
+        <SectionHeading
+          eyebrow="OUR CLINICAL TEAM"
+          title="Doctors who come home"
+          subtitle="Verified qualifications only — no inflated titles."
+        />
 
-        <div className="mt-8 grid gap-4 grid-cols-2 sm:grid-cols-3">
+        <div className="mt-8 grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
           {doctors.map((doctor) => (
             <article
               key={doctor.name}
-              className="rounded-[20px] border border-gray-200 bg-white p-5 text-center shadow-sm transition hover:-translate-y-2 hover:shadow-md"
+              className="rounded-xl border border-gray-200 bg-white p-5 text-center shadow-sm transition hover:-translate-y-1 hover:border-[#0d7055]/40 hover:shadow-md"
             >
-              <span className="mx-auto mb-3 block h-[2px] w-8 bg-[#0d7055]" aria-hidden="true" />
+              <span
+                className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-[#e5f3ef] text-lg font-bold text-[#0d7055] ring-4 ring-[#f4f8f6]"
+                aria-hidden="true"
+              >
+                {initials(doctor.name)}
+              </span>
               <h3 className="font-bold text-sm leading-tight">{doctor.name}</h3>
               <div className="mt-1 text-xs font-semibold text-[#0d7055]">
                 {doctor.specialization}

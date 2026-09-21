@@ -2,7 +2,7 @@ import { benefitsData } from "../../data/homeData";
 
 const BenefitsSection = () => {
   return (
-    <section className="py-8">
+    <section className="bg-[#f4f8f6] py-10">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
         <div className="grid gap-4 md:grid-cols-3">
           {benefitsData.map((benefit, index) => {
@@ -10,7 +10,7 @@ const BenefitsSection = () => {
             return (
               <article
                 key={benefit.label}
-                className="rounded-[20px] border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
                 <div className="flex items-start gap-4">
