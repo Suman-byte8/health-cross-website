@@ -4,7 +4,7 @@ import { statsData } from "../../data/homeData";
 // size, separated by thin dividers.
 const StatsSection = () => {
   return (
-    <section className="bg-white py-10 lg:py-12">
+    <section className="bg-[#f4f8f6] py-10 lg:py-12">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
         <div className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#0a5243] via-[#0d7055] to-[#0a5243] shadow-md">
           <div className="grid grid-cols-4 divide-x divide-white/20">

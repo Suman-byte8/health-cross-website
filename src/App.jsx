@@ -10,6 +10,7 @@ import Blogs from './pages/Blogs.jsx'
 import BlogDetail from './pages/BlogDetail.jsx'
 import Footer from './components/Footer.jsx'
 import FloatingActions from './components/common/FloatingActions.jsx'
+import LiveActivityBar from './components/common/LiveActivityBar.jsx'
 
 // Handles both "scroll to top on route change" and "scroll to the target
 // section when a link carries a hash" (e.g. Navbar's Clinical Team link,
@@ -52,6 +53,7 @@ export default function App() {
       </main>
       <Footer />
       <FloatingActions />
+      <LiveActivityBar />
     </>
   )
 }

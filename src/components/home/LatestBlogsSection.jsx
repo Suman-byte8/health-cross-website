@@ -8,7 +8,7 @@ const LatestBlogsSection = () => {
   const latest = blogs.slice(0, 3);
 
   return (
-    <section id="blog" className="bg-white py-10 lg:py-12">
+    <section id="blog" className="bg-[#f4f8f6] py-10 lg:py-12">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
         <SectionHeading eyebrow="FROM THE BLOG" title="Latest Blogs" />
 
