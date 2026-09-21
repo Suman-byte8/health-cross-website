@@ -5,9 +5,9 @@ import aboutImg from "../../assets/about_image.png";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-10 lg:py-14">
+    <section id="about" className="bg-white py-10 lg:py-14">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
-        <div className="grid gap-6 lg:grid-cols-2 bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
+        <div className="grid gap-6 lg:grid-cols-2 overflow-hidden rounded-2xl border border-gray-200 bg-[#f4f8f6]">
           <div className="relative p-4 sm:p-6 flex flex-col justify-center">
             <div className="relative overflow-hidden rounded-xl aspect-[3/4] lg:aspect-auto lg:h-full min-h-[360px] lg:min-h-[480px] bg-[#f4f8f6]">
               <img

@@ -3,6 +3,7 @@ import { ArrowRight, Calendar, FileText } from "lucide-react";
 import { vlogs } from "../data/vlogs";
 import PlaceholderMedia from "../components/common/PlaceholderMedia";
 import Seo from "../components/common/Seo";
+import PageHeader from "../components/common/PageHeader";
 
 export default function Vlogs() {
   const [featured, ...rest] = vlogs;
@@ -15,19 +16,14 @@ export default function Vlogs() {
         path="/vlogs"
       />
 
-      <div className="mx-auto max-w-[1180px] px-4 py-10 sm:px-6 lg:py-14">
-        <div className="max-w-2xl">
-          <div className="text-xs font-bold uppercase tracking-[0.14em] text-[#0d7055]">
-            HEALTH CROSS VLOG
-          </div>
-          <h1 className="mt-2 text-[30px] font-bold tracking-tight lg:text-[38px]">
-            Vlogs & Updates
-          </h1>
-          <p className="mt-2 text-sm leading-6 text-[#1a1a1a]/60">
-            Stories, updates and care tips from Health Cross Organization.
-          </p>
-        </div>
+      <PageHeader
+        eyebrow="HEALTH CROSS VLOG"
+        title="Vlogs & Updates"
+        description="Stories, updates and care tips from Health Cross Organization."
+        crumbs={[{ label: "Blog" }]}
+      />
 
+      <div className="mx-auto max-w-[1180px] px-4 py-10 sm:px-6 lg:py-14">
         {vlogs.length === 0 ? (
           <div className="mt-10 rounded-xl border border-dashed border-gray-200 bg-white p-12 text-center text-sm text-[#1a1a1a]/50">
             New vlog posts are coming soon.

@@ -51,7 +51,7 @@ const ContactSection = () => {
     "w-full rounded-xl border border-gray-200 bg-[#fafbf9] px-4 py-3 text-sm outline-none focus:border-[#0d7055] focus:ring-2 focus:ring-[#e5f3ef] transition";
 
   return (
-    <section id="contact" className="py-8">
+    <section id="contact" className="bg-[#f4f8f6] py-10 lg:py-14">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#e5f3ef] via-white to-[#fff8e1] border border-gray-200 p-8 lg:p-10">
           <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-center">

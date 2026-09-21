@@ -1,5 +1,6 @@
 import AboutSection from "../components/home/AboutSection";
 import Seo from "../components/common/Seo";
+import PageHeader from "../components/common/PageHeader";
 
 export default function About() {
   return (
@@ -9,9 +10,12 @@ export default function About() {
         description="Learn about Health Cross Organization — Kolkata's trusted home healthcare provider, combining clinical rigor with compassionate, personalized care."
         path="/about"
       />
-      <div className="py-4 lg:py-6">
-        <AboutSection />
-      </div>
+      <PageHeader
+        title="About Us"
+        description="Kolkata's trusted home healthcare provider, combining clinical rigor with compassionate, personalized care."
+        crumbs={[{ label: "About Us" }]}
+      />
+      <AboutSection />
     </div>
   );
 }

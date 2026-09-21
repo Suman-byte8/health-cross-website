@@ -1,5 +1,6 @@
 import ContactSection from "../components/home/ContactSection";
 import Seo from "../components/common/Seo";
+import PageHeader from "../components/common/PageHeader";
 
 export default function Contact() {
   return (
@@ -9,9 +10,12 @@ export default function Contact() {
         description="Get in touch with Health Cross Organization for home healthcare in Kolkata — call, WhatsApp, or request a callback."
         path="/contact"
       />
-      <div className="py-4 lg:py-6">
-        <ContactSection />
-      </div>
+      <PageHeader
+        title="Contact Us"
+        description="Call, WhatsApp, or request a callback."
+        crumbs={[{ label: "Contact Us" }]}
+      />
+      <ContactSection />
     </div>
   );
 }

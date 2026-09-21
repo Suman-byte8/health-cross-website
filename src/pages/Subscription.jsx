@@ -1,5 +1,6 @@
 import PricingSection from "../components/home/PricingSection";
 import Seo from "../components/common/Seo";
+import PageHeader from "../components/common/PageHeader";
 
 export default function Subscription() {
   return (
@@ -9,9 +10,12 @@ export default function Subscription() {
         description="Transparent, verified home healthcare subscription plans from Health Cross Organization — Standard and Premium, with no hidden fees."
         path="/subscription"
       />
-      <div className="py-4 lg:py-6">
-        <PricingSection />
-      </div>
+      <PageHeader
+        title="Subscription Plans"
+        description="Standard and Premium home healthcare plans, with no hidden fees."
+        crumbs={[{ label: "Subscription Plans" }]}
+      />
+      <PricingSection />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { ArrowLeft, Calendar, FileText, Share2, User } from "lucide-react";
 import { vlogs } from "../data/vlogs";
 import PlaceholderMedia from "../components/common/PlaceholderMedia";
 import Seo from "../components/common/Seo";
+import PageHeader from "../components/common/PageHeader";
 
 export default function VlogDetail() {
   const { slug } = useParams();
@@ -45,6 +46,10 @@ export default function VlogDetail() {
   return (
     <div className="bg-[#fafbf9] text-[#1a1a1a]">
       <Seo title={post.title} description={post.excerpt} path={`/vlogs/${post.slug}`} />
+      <PageHeader
+        title="Vlogs & Updates"
+        crumbs={[{ label: "Blog", to: "/vlogs" }, { label: post.category }]}
+      />
 
       <article className="mx-auto max-w-[820px] px-4 py-10 sm:px-6 lg:py-14">
         <Link
