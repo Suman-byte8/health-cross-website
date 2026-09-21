@@ -3,33 +3,25 @@ import { Stethoscope, ZoomIn } from "lucide-react";
 import { medicalEquipment } from "../../data/medicalEquipment";
 import PlaceholderMedia from "../common/PlaceholderMedia";
 import Modal from "../common/Modal";
+import SectionHeading from "../common/SectionHeading";
 
 const MedicalEquipmentSection = () => {
   const [activeItem, setActiveItem] = useState(null);
 
   return (
-    <section id="medical-equipment" className="py-8 lg:py-10">
+    <section id="medical-equipment" className="bg-[#f4f8f6] py-10 lg:py-12">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
-        <div className="flex flex-wrap items-end justify-between gap-3">
-          <div>
-            <div className="text-xs font-bold uppercase tracking-[0.14em] text-[#0d7055]">
-              MEDICAL EQUIPMENT
-            </div>
-            <h2 className="mt-2 text-[28px] font-bold lg:text-[34px]">
-              Hospital-grade care, at home
-            </h2>
-          </div>
-        </div>
-        <p className="mt-2 max-w-2xl text-sm text-[#1a1a1a]/60">
-          A look at the equipment our clinical team brings into your home for
-          monitoring, respiratory support and patient care.
-        </p>
+        <SectionHeading
+          eyebrow="MEDICAL EQUIPMENT"
+          title="Hospital-grade care, at home"
+          subtitle="A look at the equipment our clinical team brings into your home for monitoring, respiratory support and patient care."
+        />
 
         <div className="mt-8 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {medicalEquipment.map((item, index) => (
             <article
               key={index}
-              className="group flex flex-col overflow-hidden rounded-[20px] border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
               <button
                 type="button"
@@ -78,7 +70,7 @@ const MedicalEquipmentSection = () => {
               <img
                 src={activeItem.image}
                 alt={activeItem.name}
-                className="w-full rounded-[16px] object-cover"
+                className="w-full rounded-xl object-cover"
               />
             ) : (
               <PlaceholderMedia icon={Stethoscope} label="Equipment photo coming soon" aspect="aspect-[16/10]" />

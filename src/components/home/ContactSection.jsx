@@ -53,7 +53,7 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-8">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
-        <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#e5f3ef] via-white to-[#fff8e1] border border-gray-200 p-8 lg:p-10">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#e5f3ef] via-white to-[#fff8e1] border border-gray-200 p-8 lg:p-10">
           <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-center">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full bg-white border border-gray-200 px-3 py-1 text-xs font-bold text-[#0d7055]">
@@ -73,11 +73,11 @@ const ContactSection = () => {
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
-                <a href="tel:+917439036203" className="inline-flex items-center gap-2 rounded-full bg-[#0d7055] px-7 py-3.5 text-sm font-semibold text-white hover:bg-[#0a5243] transition">
+                <a href="tel:+917439036203" className="inline-flex items-center gap-2 rounded-lg bg-[#0d7055] px-7 py-3.5 text-sm font-semibold text-white hover:bg-[#0a5243] transition">
                   <Phone className="h-4 w-4" /> Call Now 74390 36203
                 </a>
 
-                <a href={heroWhatsApp} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-7 py-3.5 text-sm font-semibold text-white hover:bg-[#1eb855] transition">
+                <a href={heroWhatsApp} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-lg bg-[#25D366] px-7 py-3.5 text-sm font-semibold text-white hover:bg-[#1eb855] transition">
                   <MessageCircle className="h-4 w-4" /> WhatsApp Us
                 </a>
               </div>
@@ -92,7 +92,7 @@ const ContactSection = () => {
               </div>
             </div>
 
-            <div className="rounded-[20px] border border-gray-200 bg-white p-5 shadow-lg">
+            <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-lg">
               <div className="flex items-center gap-2 text-[15px] font-bold text-[#1a1a1a]">
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#e5f3ef] text-[#25D366]">
                   <MessageCircle className="h-4 w-4" />
@@ -136,7 +136,7 @@ const ContactSection = () => {
 
                 <button
                   type="submit"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-sm font-semibold text-white hover:bg-[#1eb855] transition"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#25D366] px-4 py-3 text-sm font-semibold text-white hover:bg-[#1eb855] transition"
                 >
                   <MessageCircle className="h-4 w-4" /> Send on WhatsApp
                 </button>

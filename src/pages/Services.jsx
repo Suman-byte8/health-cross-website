@@ -4,7 +4,7 @@ import Seo from "../components/common/Seo";
 
 export default function Services() {
   return (
-    <div className="bg-[#fafbf9] text-[#1a1a1a] pt-[88px]">
+    <div className="bg-[#fafbf9] text-[#1a1a1a]">
       <Seo
         title="Our Services"
         description="Explore Health Cross Organization's home healthcare services in Kolkata — elder care, critical care, physiotherapy, nursing, diagnostics and more, delivered at your doorstep."

@@ -3,7 +3,7 @@ import Seo from "../components/common/Seo";
 
 export default function About() {
   return (
-    <div className="bg-[#fafbf9] text-[#1a1a1a] pt-[88px]">
+    <div className="bg-[#fafbf9] text-[#1a1a1a]">
       <Seo
         title="About Us"
         description="Learn about Health Cross Organization — Kolkata's trusted home healthcare provider, combining clinical rigor with compassionate, personalized care."

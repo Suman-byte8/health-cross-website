@@ -7,9 +7,9 @@ const AboutSection = () => {
   return (
     <section id="about" className="py-10 lg:py-14">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
-        <div className="grid gap-6 lg:grid-cols-2 bg-white rounded-[24px] border border-gray-200 shadow-lg overflow-hidden">
+        <div className="grid gap-6 lg:grid-cols-2 bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
           <div className="relative p-4 sm:p-6 flex flex-col justify-center">
-            <div className="relative overflow-hidden rounded-[20px] aspect-[3/4] lg:aspect-auto lg:h-full min-h-[360px] lg:min-h-[480px] bg-[#f4f8f6]">
+            <div className="relative overflow-hidden rounded-xl aspect-[3/4] lg:aspect-auto lg:h-full min-h-[360px] lg:min-h-[480px] bg-[#f4f8f6]">
               <img
                 src={aboutImg}
                 alt="About Health Cross"
@@ -86,13 +86,13 @@ const AboutSection = () => {
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
                 to="/contact"
-                className="rounded-full bg-[#0d7055] px-6 py-3 text-sm font-semibold text-[#ffffff] hover:bg-[#0a5243] transition"
+                className="rounded-lg bg-[#0d7055] px-6 py-3 text-sm font-semibold text-[#ffffff] hover:bg-[#0a5243] transition"
               >
                 Book Consultation
               </Link>
               <a
                 href="tel:+919732443744"
-                className="rounded-full border border-[#0d7055]/15 bg-white px-6 py-3 text-sm font-semibold text-[#1a1a1a] hover:bg-[#0d7055]/5 transition"
+                className="rounded-lg border border-[#0d7055]/15 bg-white px-6 py-3 text-sm font-semibold text-[#1a1a1a] hover:bg-[#0d7055]/5 transition"
               >
                 Talk to Us
               </a>

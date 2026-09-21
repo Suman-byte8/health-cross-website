@@ -1,4 +1,5 @@
 import HeroSection from "../components/home/HeroSection";
+import QuickServicesSection from "../components/home/QuickServicesSection";
 import BenefitsSection from "../components/home/BenefitsSection";
 import ClinicalTeamSection from "../components/home/ClinicalTeamSection";
 import MedicalEquipmentSection from "../components/home/MedicalEquipmentSection";
@@ -19,6 +20,7 @@ export default function Home() {
         path="/"
       />
       <HeroSection />
+      <QuickServicesSection />
       <BenefitsSection />
       <ClinicalTeamSection />
       <MedicalEquipmentSection />

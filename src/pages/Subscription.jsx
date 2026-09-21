@@ -3,7 +3,7 @@ import Seo from "../components/common/Seo";
 
 export default function Subscription() {
   return (
-    <div className="bg-[#fafbf9] text-[#1a1a1a] pt-[88px]">
+    <div className="bg-[#fafbf9] text-[#1a1a1a]">
       <Seo
         title="Subscription Plans"
         description="Transparent, verified home healthcare subscription plans from Health Cross Organization — Standard and Premium, with no hidden fees."

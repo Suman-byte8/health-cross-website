@@ -2,30 +2,18 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Calendar, FileText } from "lucide-react";
 import { vlogs } from "../../data/vlogs";
 import PlaceholderMedia from "../common/PlaceholderMedia";
+import SectionHeading from "../common/SectionHeading";
 
 const LatestVlogsSection = () => {
   const latest = vlogs.slice(0, 3);
 
   return (
-    <section id="blog" className="py-8 lg:py-10">
+    <section id="blog" className="bg-white py-10 lg:py-12">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
-        <div className="flex flex-wrap items-end justify-between gap-3">
-          <div>
-            <div className="text-xs font-bold uppercase tracking-[0.14em] text-[#0d7055]">
-              FROM THE VLOG
-            </div>
-            <h2 className="mt-2 text-[28px] font-bold lg:text-[34px]">Latest Vlogs</h2>
-          </div>
-          <Link
-            to="/vlogs"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#0d7055] transition hover:gap-3"
-          >
-            View All <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
-        </div>
+        <SectionHeading eyebrow="FROM THE VLOG" title="Latest Vlogs" />
 
         {latest.length === 0 ? (
-          <div className="mt-6 rounded-[20px] border border-dashed border-gray-200 bg-white p-10 text-center text-sm text-[#1a1a1a]/50">
+          <div className="mt-6 rounded-xl border border-dashed border-gray-200 bg-white p-10 text-center text-sm text-[#1a1a1a]/50">
             New vlog posts are coming soon.
           </div>
         ) : (
@@ -34,7 +22,7 @@ const LatestVlogsSection = () => {
               <Link
                 key={post.slug}
                 to={`/vlogs/${post.slug}`}
-                className="group flex flex-col overflow-hidden rounded-[20px] border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
               >
                 {post.image ? (
                   <img
@@ -71,6 +59,15 @@ const LatestVlogsSection = () => {
             ))}
           </div>
         )}
+
+        <div className="mt-8 text-center">
+          <Link
+            to="/vlogs"
+            className="inline-flex items-center gap-2 rounded-lg border border-[#0d7055] px-6 py-2.5 text-sm font-semibold text-[#0d7055] transition hover:bg-[#0d7055] hover:text-white"
+          >
+            View All <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
       </div>
     </section>
   );

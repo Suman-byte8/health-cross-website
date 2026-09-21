@@ -10,7 +10,7 @@ export default function VlogDetail() {
 
   if (!post) {
     return (
-      <div className="bg-[#fafbf9] text-[#1a1a1a] pt-[88px] min-h-[60vh]">
+      <div className="bg-[#fafbf9] text-[#1a1a1a] min-h-[60vh]">
         <div className="mx-auto max-w-[720px] px-4 py-16 text-center sm:px-6">
           <h1 className="text-2xl font-bold">Post not found</h1>
           <p className="mt-2 text-sm text-[#1a1a1a]/60">
@@ -18,7 +18,7 @@ export default function VlogDetail() {
           </p>
           <Link
             to="/vlogs"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#0d7055] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#0a5243]"
+            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-[#0d7055] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#0a5243]"
           >
             <ArrowLeft className="h-4 w-4" /> Back to Vlogs
           </Link>
@@ -43,7 +43,7 @@ export default function VlogDetail() {
   };
 
   return (
-    <div className="bg-[#fafbf9] text-[#1a1a1a] pt-[88px]">
+    <div className="bg-[#fafbf9] text-[#1a1a1a]">
       <Seo title={post.title} description={post.excerpt} path={`/vlogs/${post.slug}`} />
 
       <article className="mx-auto max-w-[820px] px-4 py-10 sm:px-6 lg:py-14">
@@ -81,7 +81,7 @@ export default function VlogDetail() {
           </button>
         </div>
 
-        <div className="mt-6 overflow-hidden rounded-[20px]">
+        <div className="mt-6 overflow-hidden rounded-xl">
           {post.image ? (
             <img src={post.image} alt={post.title} className="w-full object-cover" />
           ) : (
@@ -105,7 +105,7 @@ export default function VlogDetail() {
                 <Link
                   key={item.slug}
                   to={`/vlogs/${item.slug}`}
-                  className="group flex flex-col overflow-hidden rounded-[20px] border border-gray-200 bg-[#fafbf9] shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                  className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-[#fafbf9] shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                 >
                   {item.image ? (
                     <img

@@ -5,6 +5,7 @@ import { mediaVideos } from "../../data/mediaVideos";
 import PlaceholderMedia from "../common/PlaceholderMedia";
 import Modal from "../common/Modal";
 import Slider from "../common/Slider";
+import SectionHeading from "../common/SectionHeading";
 
 const FILTER_LABELS = {
   testimonial: "Patient Testimonials",
@@ -33,21 +34,12 @@ const VideoTestimonialsSection = () => {
   if (allVideos.length === 0) return null;
 
   return (
-    <section id="testimonials" className="py-8 lg:py-10">
+    <section id="testimonials" className="bg-white py-10 lg:py-12">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
-        <div className="flex flex-wrap items-end justify-between gap-3">
-          <div className="max-w-2xl">
-            <div className="text-xs font-bold uppercase tracking-[0.14em] text-[#0d7055]">
-              PATIENT STORIES
-            </div>
-            <h2 className="mt-2 text-[28px] font-bold lg:text-[34px]">
-              Video testimonials & clinic moments
-            </h2>
-          </div>
-        </div>
+        <SectionHeading eyebrow="PATIENT STORIES" title="Video testimonials & clinic moments" />
 
         {availableTypes.length > 1 && (
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-6 flex flex-wrap justify-center gap-2">
             {["all", ...availableTypes].map((key) => (
               <button
                 key={key}
@@ -70,7 +62,7 @@ const VideoTestimonialsSection = () => {
             <article
               key={index}
               data-slide
-              className="w-[200px] shrink-0 snap-start overflow-hidden rounded-[20px] border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:w-[230px] lg:w-[250px]"
+              className="w-[200px] shrink-0 snap-start overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:w-[230px] lg:w-[250px]"
             >
               <button
                 type="button"

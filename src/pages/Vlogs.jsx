@@ -8,7 +8,7 @@ export default function Vlogs() {
   const [featured, ...rest] = vlogs;
 
   return (
-    <div className="bg-[#fafbf9] text-[#1a1a1a] pt-[88px]">
+    <div className="bg-[#fafbf9] text-[#1a1a1a]">
       <Seo
         title="Vlogs"
         description="Vlogs and updates from Health Cross Organization — home healthcare news, care tips and clinic stories from Kolkata."
@@ -29,7 +29,7 @@ export default function Vlogs() {
         </div>
 
         {vlogs.length === 0 ? (
-          <div className="mt-10 rounded-[20px] border border-dashed border-gray-200 bg-white p-12 text-center text-sm text-[#1a1a1a]/50">
+          <div className="mt-10 rounded-xl border border-dashed border-gray-200 bg-white p-12 text-center text-sm text-[#1a1a1a]/50">
             New vlog posts are coming soon.
           </div>
         ) : (
@@ -37,7 +37,7 @@ export default function Vlogs() {
             {/* Featured / latest vlog */}
             <Link
               to={`/vlogs/${featured.slug}`}
-              className="group mt-8 grid gap-6 overflow-hidden rounded-[24px] border border-gray-200 bg-white shadow-sm transition hover:shadow-lg lg:grid-cols-2"
+              className="group mt-8 grid gap-6 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:shadow-lg lg:grid-cols-2"
             >
               {featured.image ? (
                 <img
@@ -82,7 +82,7 @@ export default function Vlogs() {
                   <Link
                     key={post.slug}
                     to={`/vlogs/${post.slug}`}
-                    className="group flex flex-col overflow-hidden rounded-[20px] border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                    className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                   >
                     {post.image ? (
                       <img

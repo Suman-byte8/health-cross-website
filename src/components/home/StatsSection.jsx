@@ -2,9 +2,9 @@ import { statsData } from "../../data/homeData";
 
 const StatsSection = () => {
   return (
-    <section className="py-8">
+    <section className="bg-white py-10 lg:py-12">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
-        <div className="relative overflow-hidden rounded-[24px] bg-[#0d7055] p-6 lg:p-10 text-white">
+        <div className="relative overflow-hidden rounded-2xl bg-[#0d7055] p-6 lg:p-10 text-white">
           <div className="grid gap-6 lg:grid-cols-4">
             {statsData.map((stat) => (
               <div key={stat.label} className="text-center">

@@ -8,9 +8,9 @@ const MediaCoverageSection = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <section id="media-coverage" className="py-8 lg:py-10">
+    <section id="media-coverage" className="bg-[#f4f8f6] py-10 lg:py-12">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
-        <div className="flex flex-col items-center gap-5 rounded-[24px] border border-gray-200 bg-white p-8 text-center shadow-sm lg:p-10">
+        <div className="flex flex-col items-center gap-5 rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm lg:p-10">
           <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e5f3ef] text-[#0d7055]">
             <Newspaper className="h-6 w-6" />
           </span>
@@ -27,7 +27,7 @@ const MediaCoverageSection = () => {
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="inline-flex items-center gap-2 rounded-full bg-[#0d7055] px-7 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0a5243]"
+            className="inline-flex items-center gap-2 rounded-lg bg-[#0d7055] px-7 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0a5243]"
           >
             View Media Coverage
           </button>
@@ -45,7 +45,7 @@ const MediaCoverageSection = () => {
           {mediaCoverage.map((item, index) => (
             <article
               key={index}
-              className="overflow-hidden rounded-[16px] border border-gray-200 bg-[#fafbf9]"
+              className="overflow-hidden rounded-xl border border-gray-200 bg-[#fafbf9]"
             >
               {item.image ? (
                 <img

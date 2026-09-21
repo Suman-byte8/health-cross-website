@@ -1,29 +1,22 @@
 import { CheckCircle2 } from "lucide-react";
 import { plansData } from "../../data/homeData";
+import SectionHeading from "../common/SectionHeading";
 
 const PricingSection = () => {
   return (
-    <section id="subscription" className="py-8 lg:py-10">
+    <section id="subscription" className="bg-[#f4f8f6] py-10 lg:py-12">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
-        <div className="text-center max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[#0d7055]">
-            <span className="h-[2px] w-6 bg-[#0d7055]" /> SUBSCRIPTION PLANS{" "}
-            <span className="h-[2px] w-6 bg-[#0d7055]" />
-          </div>
-          <h2 className="mt-2 text-[28px] font-bold lg:text-[36px]">
-            Care that fits your life
-          </h2>
-          <p className="mt-2 text-sm text-[#1a1a1a]/60">
-            Transparent, verified pricing. No hidden fees. Pause or upgrade
-            anytime.
-          </p>
-        </div>
+        <SectionHeading
+          eyebrow="SUBSCRIPTION PLANS"
+          title="Care that fits your life"
+          subtitle="Transparent, verified pricing. No hidden fees. Pause or upgrade anytime."
+        />
 
         <div className="mx-auto mt-8 grid gap-6 max-w-[860px] md:grid-cols-2">
           {plansData.map((plan) => (
             <div
               key={plan.name}
-              className={`rounded-[20px] p-6 lg:p-7 shadow-sm transition hover:shadow-xl ${
+              className={`rounded-xl p-6 lg:p-7 shadow-sm transition hover:shadow-xl ${
                 plan.highlight
                   ? "bg-[#0d7055] text-white scale-105 hover:scale-[1.08]"
                   : "bg-white border border-gray-200 hover:scale-[1.02]"

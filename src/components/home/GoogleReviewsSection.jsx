@@ -17,9 +17,9 @@ const GoogleReviewsSection = () => {
   const { rating, outOf, reviewCount, profileUrl } = googleRatingSummary;
 
   return (
-    <section id="google-reviews" className="py-8 lg:py-10">
+    <section id="google-reviews" className="bg-[#f4f8f6] py-10 lg:py-12">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
-        <div className="rounded-[24px] border border-gray-200 bg-white shadow-sm overflow-hidden">
+        <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
           {/* Trust bar */}
           <div className="flex flex-col gap-5 border-b border-gray-100 p-6 sm:flex-row sm:items-center sm:justify-between lg:p-8">
             <div className="flex items-center gap-4">
@@ -46,7 +46,7 @@ const GoogleReviewsSection = () => {
               href={profileUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0d7055] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0a5243] shrink-0"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#0d7055] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0a5243] shrink-0"
             >
               View all reviews on Google <ExternalLink className="h-4 w-4" />
             </a>
@@ -65,7 +65,7 @@ const GoogleReviewsSection = () => {
                 <article
                   key={index}
                   data-slide
-                  className="flex w-[280px] shrink-0 snap-start flex-col rounded-[18px] border border-gray-200 bg-[#fafbf9] p-5 sm:w-[320px]"
+                  className="flex w-[280px] shrink-0 snap-start flex-col rounded-xl border border-gray-200 bg-[#fafbf9] p-5 sm:w-[320px]"
                 >
                   <Quote className="h-5 w-5 text-[#0d7055]/40" aria-hidden="true" />
                   <p className="mt-2 flex-1 text-sm leading-6 text-[#1a1a1a]/75">
