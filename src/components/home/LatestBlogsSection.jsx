@@ -1,27 +1,27 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Calendar, FileText } from "lucide-react";
-import { vlogs } from "../../data/vlogs";
+import { blogs } from "../../data/blogs";
 import PlaceholderMedia from "../common/PlaceholderMedia";
 import SectionHeading from "../common/SectionHeading";
 
-const LatestVlogsSection = () => {
-  const latest = vlogs.slice(0, 3);
+const LatestBlogsSection = () => {
+  const latest = blogs.slice(0, 3);
 
   return (
     <section id="blog" className="bg-white py-10 lg:py-12">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
-        <SectionHeading eyebrow="FROM THE VLOG" title="Latest Vlogs" />
+        <SectionHeading eyebrow="FROM THE BLOG" title="Latest Blogs" />
 
         {latest.length === 0 ? (
           <div className="mt-6 rounded-xl border border-dashed border-gray-200 bg-white p-10 text-center text-sm text-[#1a1a1a]/50">
-            New vlog posts are coming soon.
+            New blog posts are coming soon.
           </div>
         ) : (
           <div className="mt-6 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {latest.map((post) => (
               <Link
                 key={post.slug}
-                to={`/vlogs/${post.slug}`}
+                to={`/blogs/${post.slug}`}
                 className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
               >
                 {post.image ? (
@@ -62,7 +62,7 @@ const LatestVlogsSection = () => {
 
         <div className="mt-8 text-center">
           <Link
-            to="/vlogs"
+            to="/blogs"
             className="inline-flex items-center gap-2 rounded-lg border border-[#0d7055] px-6 py-2.5 text-sm font-semibold text-[#0d7055] transition hover:bg-[#0d7055] hover:text-white"
           >
             View All <ArrowRight className="h-3.5 w-3.5" />
@@ -73,4 +73,4 @@ const LatestVlogsSection = () => {
   );
 };
 
-export default LatestVlogsSection;
+export default LatestBlogsSection;

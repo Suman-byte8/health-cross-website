@@ -8,7 +8,7 @@ import StatsSection from "../components/home/StatsSection";
 import GoogleReviewsSection from "../components/home/GoogleReviewsSection";
 import VideoTestimonialsSection from "../components/home/VideoTestimonialsSection";
 import MediaCoverageSection from "../components/home/MediaCoverageSection";
-import LatestVlogsSection from "../components/home/LatestVlogsSection";
+import LatestBlogsSection from "../components/home/LatestBlogsSection";
 import HomeCtaSection from "../components/home/HomeCtaSection";
 import Seo from "../components/common/Seo";
 
@@ -30,7 +30,7 @@ export default function Home() {
       <GoogleReviewsSection />
       <VideoTestimonialsSection />
       <MediaCoverageSection />
-      <LatestVlogsSection />
+      <LatestBlogsSection />
       <HomeCtaSection />
     </div>
   );

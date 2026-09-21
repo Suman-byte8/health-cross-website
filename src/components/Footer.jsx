@@ -32,7 +32,7 @@ const columns = [
       { label: 'Video Testimonials', to: '/#testimonials' },
       { label: 'Google Reviews', to: '/#google-reviews' },
       { label: 'Medical Equipment', to: '/#medical-equipment' },
-      { label: 'Blog', to: '/vlogs' },
+      { label: 'Blog', to: '/blogs' },
     ],
   },
 ]
