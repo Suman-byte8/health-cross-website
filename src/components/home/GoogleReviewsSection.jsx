@@ -1,6 +1,5 @@
 import { ExternalLink, Quote, Star } from "lucide-react";
 import { googleRatingSummary, googleReviews } from "../../data/googleReviews";
-import { PlaceholderBadge } from "../common/PlaceholderMedia";
 import Slider from "../common/Slider";
 
 const StarRow = ({ count = 5, className = "h-4 w-4" }) => (
@@ -59,9 +58,6 @@ const GoogleReviewsSection = () => {
               <h2 className="text-lg font-bold text-[#1a1a1a]">
                 What patients & families say
               </h2>
-              {googleReviews.some((r) => r.placeholder) && (
-                <PlaceholderBadge>Sample layout — real reviews pending</PlaceholderBadge>
-              )}
             </div>
 
             <Slider>

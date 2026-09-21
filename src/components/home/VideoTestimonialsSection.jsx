@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Play } from "lucide-react";
 import { videoTestimonials } from "../../data/videoTestimonials";
 import { mediaVideos } from "../../data/mediaVideos";
-import PlaceholderMedia, { PlaceholderBadge } from "../common/PlaceholderMedia";
+import PlaceholderMedia from "../common/PlaceholderMedia";
 import Modal from "../common/Modal";
 import Slider from "../common/Slider";
 
@@ -19,7 +19,6 @@ const FILTER_LABELS = {
 // filler card is shown alongside actual content.
 const rawVideos = [...videoTestimonials, ...mediaVideos];
 const allVideos = rawVideos.filter((item) => item.video && !item.placeholder);
-const hasPendingPlaceholders = rawVideos.some((item) => item.placeholder);
 const availableTypes = [...new Set(allVideos.map((item) => item.type))];
 
 const VideoTestimonialsSection = () => {
@@ -45,9 +44,6 @@ const VideoTestimonialsSection = () => {
               Video testimonials & clinic moments
             </h2>
           </div>
-          {hasPendingPlaceholders && (
-            <PlaceholderBadge>More videos to be supplied by client</PlaceholderBadge>
-          )}
         </div>
 
         {availableTypes.length > 1 && (

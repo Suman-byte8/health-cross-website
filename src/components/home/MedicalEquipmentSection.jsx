@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Stethoscope, ZoomIn } from "lucide-react";
 import { medicalEquipment } from "../../data/medicalEquipment";
-import PlaceholderMedia, { PlaceholderBadge } from "../common/PlaceholderMedia";
+import PlaceholderMedia from "../common/PlaceholderMedia";
 import Modal from "../common/Modal";
 
 const MedicalEquipmentSection = () => {
@@ -19,9 +19,6 @@ const MedicalEquipmentSection = () => {
               Hospital-grade care, at home
             </h2>
           </div>
-          {medicalEquipment.some((item) => !item.image) && (
-            <PlaceholderBadge>Photos to be supplied by client</PlaceholderBadge>
-          )}
         </div>
         <p className="mt-2 max-w-2xl text-sm text-[#1a1a1a]/60">
           A look at the equipment our clinical team brings into your home for

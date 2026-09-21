@@ -18,9 +18,4 @@ export const doctors = [
   { name: "Dr. Ashik Ikbal", specialization: "MD, Critical Care Expert" },
   { name: "Dr. Priyadarshini Sannigrahi", specialization: "Paediatrician" },
   { name: "Dr. Inayat Kabir", specialization: "General Physician and Critical Care Expert" },
-  {
-    name: "Physiotherapist (Speech & Technician)",
-    specialization: "Team member to be confirmed",
-    placeholder: true,
-  },
 ];

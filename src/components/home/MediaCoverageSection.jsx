@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Newspaper } from "lucide-react";
 import { mediaCoverage } from "../../data/mediaCoverage";
-import PlaceholderMedia, { PlaceholderBadge } from "../common/PlaceholderMedia";
+import PlaceholderMedia from "../common/PlaceholderMedia";
 import Modal from "../common/Modal";
 
 const MediaCoverageSection = () => {
@@ -41,11 +41,6 @@ const MediaCoverageSection = () => {
         labelledBy="media-coverage-modal-title"
         widthClass="max-w-3xl"
       >
-        <div className="mb-4">
-          {mediaCoverage.some((m) => m.placeholder) && (
-            <PlaceholderBadge>Sample layout — clippings pending</PlaceholderBadge>
-          )}
-        </div>
         <div className="grid gap-4 sm:grid-cols-2">
           {mediaCoverage.map((item, index) => (
             <article

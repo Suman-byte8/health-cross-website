@@ -20,11 +20,7 @@ const ClinicalTeamSection = () => {
           {doctors.map((doctor) => (
             <article
               key={doctor.name}
-              className={`rounded-[20px] border p-5 text-center shadow-sm transition hover:-translate-y-2 hover:shadow-md ${
-                doctor.placeholder
-                  ? "border-dashed border-[#0d7055]/30 bg-[#f4f8f6]"
-                  : "border-gray-200 bg-white"
-              }`}
+              className="rounded-[20px] border border-gray-200 bg-white p-5 text-center shadow-sm transition hover:-translate-y-2 hover:shadow-md"
             >
               <span className="mx-auto mb-3 block h-[2px] w-8 bg-[#0d7055]" aria-hidden="true" />
               <h3 className="font-bold text-sm leading-tight">{doctor.name}</h3>
