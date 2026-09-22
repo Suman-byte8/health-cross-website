@@ -17,7 +17,7 @@ const GoogleReviewsSection = () => {
   const { rating, outOf, reviewCount, profileUrl } = googleRatingSummary;
 
   return (
-    <section id="google-reviews" className="bg-[#f4f8f6] py-10 lg:py-12">
+    <section id="google-reviews" className="bg-white py-10 lg:py-12">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
         <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
           {/* Trust bar */}

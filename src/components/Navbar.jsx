@@ -8,14 +8,9 @@ const navLinks = [
   { label: 'About', to: '/about' },
   { label: 'Services', to: '/services' },
   { label: 'Subscription', to: '/subscription' },
-  { label: 'Blog', to: '/vlogs' },
+  { label: 'Blog', to: '/blogs' },
   { label: 'Contact', to: '/contact' },
 ]
-
-// Points at the Clinical Team section on the Home page from anywhere in the
-// site. It isn't a standalone route, so it can't share the active-state
-// highlighting the other (page-based) nav links get via NavLink.
-const clinicalTeamLink = { label: 'Clinical Team', to: '/#wellness' }
 
 const navItemBase =
   'relative px-3 py-6 text-[13.5px] font-semibold transition after:absolute after:inset-x-3 after:bottom-0 after:h-[3px] after:rounded-t-full after:transition'
@@ -71,12 +66,6 @@ export default function Navbar() {
                 {item.label}
               </NavLink>
             ))}
-            <Link
-              to={clinicalTeamLink.to}
-              className={`${navItemBase} text-[#1a1a1a]/80 after:bg-transparent hover:text-[#0d7055] hover:after:bg-[#0d7055]/40`}
-            >
-              {clinicalTeamLink.label}
-            </Link>
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
@@ -102,7 +91,7 @@ export default function Navbar() {
 
       <div className={`${mobileOpen ? 'block' : 'hidden'} border-b border-gray-200 bg-white lg:hidden`}>
         <div className="px-4 py-3">
-          {[...navLinks, clinicalTeamLink].map((item) => (
+          {navLinks.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
@@ -110,7 +99,7 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}
               className={({ isActive }) =>
                 `block border-b border-gray-100 py-3 text-sm font-semibold transition ${
-                  isActive && !item.to.includes('#') ? 'text-[#0d7055]' : 'text-[#1a1a1a]'
+                  isActive ? 'text-[#0d7055]' : 'text-[#1a1a1a]'
                 }`
               }
             >

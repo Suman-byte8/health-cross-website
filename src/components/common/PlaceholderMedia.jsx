@@ -2,7 +2,7 @@ import { ImageIcon } from "lucide-react";
 
 /**
  * Neutral placeholder tile shown wherever real client-supplied media
- * (equipment photos, press clippings, video thumbnails, vlog covers) is not
+ * (equipment photos, press clippings, video thumbnails, blog covers) is not
  * yet available. Never renders a fabricated stock photo — only an icon and a
  * short label — so nothing on the page can be mistaken for real content.
  */

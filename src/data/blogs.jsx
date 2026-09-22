@@ -1,14 +1,14 @@
 import becauseEveryPatientCover from "../assets/blogg/because-every-patient-has-a-story.webp";
 
-// Vlog / blog posts.
+// Blog / blog posts.
 //
 // Real write-ups are added here as the client supplies them — each becomes
-// its own page at /vlogs/<slug> via the existing Vlogs/VlogDetail templates,
-// and appears on the /vlogs listing plus the homepage's Latest Vlogs teaser.
+// its own page at /blogs/<slug> via the existing Blogs/BlogDetail templates,
+// and appears on the /blogs listing plus the homepage's Latest Blogs teaser.
 //
-// CMS note: see CMS Integration Points documentation for the future "Vlogs"
+// CMS note: see CMS Integration Points documentation for the future "Blogs"
 // collection shape.
-export const vlogs = [
+export const blogs = [
   {
     slug: "because-every-patient-has-a-story",
     title: "Because Every Patient Has a Story",

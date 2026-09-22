@@ -12,7 +12,7 @@
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # Everything else (/about, /services, /vlogs/some-post ...) -> the app
+  # Everything else (/about, /services, /blogs/some-post ...) -> the app
   RewriteRule ^ index.html [L]
 </IfModule>
 

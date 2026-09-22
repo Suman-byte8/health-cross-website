@@ -1,13 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Calendar, FileText, Share2, User } from "lucide-react";
-import { vlogs } from "../data/vlogs";
+import { blogs } from "../data/blogs";
 import PlaceholderMedia from "../components/common/PlaceholderMedia";
 import Seo from "../components/common/Seo";
 import PageHeader from "../components/common/PageHeader";
 
-export default function VlogDetail() {
+export default function BlogDetail() {
   const { slug } = useParams();
-  const post = vlogs.find((v) => v.slug === slug);
+  const post = blogs.find((v) => v.slug === slug);
 
   if (!post) {
     return (
@@ -15,20 +15,20 @@ export default function VlogDetail() {
         <div className="mx-auto max-w-[720px] px-4 py-16 text-center sm:px-6">
           <h1 className="text-2xl font-bold">Post not found</h1>
           <p className="mt-2 text-sm text-[#1a1a1a]/60">
-            This vlog post may have been removed or the link is incorrect.
+            This blog post may have been removed or the link is incorrect.
           </p>
           <Link
-            to="/vlogs"
+            to="/blogs"
             className="mt-6 inline-flex items-center gap-2 rounded-lg bg-[#0d7055] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#0a5243]"
           >
-            <ArrowLeft className="h-4 w-4" /> Back to Vlogs
+            <ArrowLeft className="h-4 w-4" /> Back to Blogs
           </Link>
         </div>
       </div>
     );
   }
 
-  const related = vlogs.filter((v) => v.slug !== post.slug).slice(0, 3);
+  const related = blogs.filter((v) => v.slug !== post.slug).slice(0, 3);
 
   const handleShare = async () => {
     const shareData = { title: post.title, text: post.excerpt, url: window.location.href };
@@ -45,18 +45,18 @@ export default function VlogDetail() {
 
   return (
     <div className="bg-[#fafbf9] text-[#1a1a1a]">
-      <Seo title={post.title} description={post.excerpt} path={`/vlogs/${post.slug}`} />
+      <Seo title={post.title} description={post.excerpt} path={`/blogs/${post.slug}`} />
       <PageHeader
-        title="Vlogs & Updates"
-        crumbs={[{ label: "Blog", to: "/vlogs" }, { label: post.category }]}
+        title="Blogs & Updates"
+        crumbs={[{ label: "Blog", to: "/blogs" }, { label: post.category }]}
       />
 
       <article className="mx-auto max-w-[820px] px-4 py-10 sm:px-6 lg:py-14">
         <Link
-          to="/vlogs"
+          to="/blogs"
           className="inline-flex items-center gap-2 text-sm font-semibold text-[#0d7055] hover:underline"
         >
-          <ArrowLeft className="h-3.5 w-3.5" /> Back to Vlogs
+          <ArrowLeft className="h-3.5 w-3.5" /> Back to Blogs
         </Link>
 
         <span className="mt-6 inline-flex w-fit items-center rounded-full bg-[#e5f3ef] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-[#0d7055]">
@@ -94,7 +94,7 @@ export default function VlogDetail() {
           )}
         </div>
 
-        <div className="prose-vlog mt-8 space-y-4 text-[15px] leading-7 text-[#1a1a1a]/80">
+        <div className="prose-blog mt-8 space-y-4 text-[15px] leading-7 text-[#1a1a1a]/80">
           {(Array.isArray(post.content) ? post.content : [post.content]).map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
@@ -104,12 +104,12 @@ export default function VlogDetail() {
       {related.length > 0 && (
         <div className="border-t border-gray-200 bg-white py-10 lg:py-14">
           <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
-            <h2 className="text-lg font-bold">Related Vlogs</h2>
+            <h2 className="text-lg font-bold">Related Blogs</h2>
             <div className="mt-5 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((item) => (
                 <Link
                   key={item.slug}
-                  to={`/vlogs/${item.slug}`}
+                  to={`/blogs/${item.slug}`}
                   className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-[#fafbf9] shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                 >
                   {item.image ? (

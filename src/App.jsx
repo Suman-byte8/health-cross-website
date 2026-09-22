@@ -6,10 +6,11 @@ import About from './pages/About.jsx'
 import Services from './pages/Services.jsx'
 import Subscription from './pages/Subscription.jsx'
 import Contact from './pages/Contact.jsx'
-import Vlogs from './pages/Vlogs.jsx'
-import VlogDetail from './pages/VlogDetail.jsx'
+import Blogs from './pages/Blogs.jsx'
+import BlogDetail from './pages/BlogDetail.jsx'
 import Footer from './components/Footer.jsx'
 import FloatingActions from './components/common/FloatingActions.jsx'
+import LiveActivityBar from './components/common/LiveActivityBar.jsx'
 
 // Handles both "scroll to top on route change" and "scroll to the target
 // section when a link carries a hash" (e.g. Navbar's Clinical Team link,
@@ -46,12 +47,13 @@ export default function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/subscription" element={<Subscription />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/vlogs" element={<Vlogs />} />
-          <Route path="/vlogs/:slug" element={<VlogDetail />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs/:slug" element={<BlogDetail />} />
         </Routes>
       </main>
       <Footer />
       <FloatingActions />
+      <LiveActivityBar />
     </>
   )
 }

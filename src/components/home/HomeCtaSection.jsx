@@ -13,7 +13,7 @@ const whatsappHref =
 // already existed in ContactSection so nothing new is invented here.
 const HomeCtaSection = () => {
   return (
-    <section id="contact" className="bg-[#f4f8f6] py-10 lg:py-12">
+    <section id="contact" className="bg-white py-10 lg:py-12">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#e5f3ef] via-white to-[#fff8e1] border border-gray-200 p-8 text-center lg:p-10">
           <div className="inline-flex items-center gap-2 rounded-full bg-white border border-gray-200 px-3 py-1 text-xs font-bold text-[#0d7055]">

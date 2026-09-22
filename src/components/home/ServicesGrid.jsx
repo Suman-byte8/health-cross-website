@@ -20,8 +20,8 @@ const ServicesGrid = () => {
                 key={item.title}
                 className="flex flex-col rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:border-[#0d7055]/40 hover:shadow-lg"
               >
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[#e5f3ef] text-[#0d7055]">
-                  <Icon className="h-5 w-5" />
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#e5f3ef] text-[#0d7055]">
+                  <Icon className="h-7 w-7" />
                 </div>
                 <div className="mt-3 text-[13.5px] font-bold leading-tight">
                   {item.title}
