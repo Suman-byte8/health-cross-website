@@ -117,11 +117,11 @@ const HeroSection = () => {
             </div>
 
             <div className="relative">
-              <div className="overflow-hidden rounded-2xl border border-gray-200 bg-[#f4f8f6] p-2 shadow-sm lg:h-[420px]">
+              <div className="mx-auto aspect-[899/871] w-full max-w-[460px] overflow-hidden rounded-2xl border border-gray-200 bg-[#f4f8f6] p-2 shadow-sm lg:ml-auto lg:mr-0">
                 <img
                   src={officeInside}
                   alt="Elderly care at home"
-                  className="h-[320px] w-full rounded-xl object-contain lg:h-full"
+                  className="h-full w-full rounded-xl object-contain"
                   loading="eager"
                 />
               </div>
