@@ -43,10 +43,10 @@ export default function Navbar() {
               <Phone className="h-3.5 w-3.5 text-[#ffd699]" /> 74390 36203
             </a>
             <span className="h-3 w-px bg-white/25" />
-            <a href="https://www.facebook.com/HealthCrossOrganization" target="_blank" rel="noreferrer" aria-label="Facebook" className="hover:text-white">
+            <a href="https://www.facebook.com/HealthCrossHomeHealthCare/" target="_blank" rel="noreferrer" aria-label="Facebook" className="hover:text-white">
               <Facebook className="h-3.5 w-3.5" />
             </a>
-            <a href="https://www.instagram.com/heal_thcross?igsh=MThobWJieTh3ZHcyZw==" target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:text-white">
+            <a href="https://www.instagram.com/healthcrosshome/" target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:text-white">
               <Instagram className="h-3.5 w-3.5" />
             </a>
           </div>

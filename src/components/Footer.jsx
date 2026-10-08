@@ -38,8 +38,8 @@ const columns = [
 ]
 
 const socials = [
-  { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/HealthCrossOrganization' },
-  { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/heal_thcross?igsh=MThobWJieTh3ZHcyZw==' },
+  { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/HealthCrossHomeHealthCare/' },
+  { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/healthcrosshome/' },
   { icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/919732443744' },
 ]
 
