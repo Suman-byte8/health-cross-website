@@ -8,13 +8,13 @@
 // CMS Integration Points documentation).
 export const doctors = [
   { name: "Dr. Priyanka Ghosh", specialization: "General Physician, Critical Care Expert" },
-  { name: "Dr. Subhadip Gupta", specialization: "Neuro" },
+  { name: "Dr. Subhadip Gupta", specialization: "Neurologist" },
   { name: "Dr. Selim Akhter", specialization: "General Physician" },
   { name: "Dr. Neha Shabnam", specialization: "Consultant Dentist" },
-  { name: "Dr. Indranil Basak", specialization: "Cardio" },
-  { name: "Dr. Kity Sarkar", specialization: "Nephro" },
+  { name: "Dr. Indranil Basak", specialization: "Cardiologist" },
+  { name: "Dr. Kity Sarkar", specialization: "Nephrologist" },
   { name: "Dr. Anirban Palik", specialization: "Nephrologist" },
-  { name: "Dr. Shahid Aziz", specialization: "Gastro" },
+  { name: "Dr. Shahid Aziz", specialization: "Gastroenterologist" },
   { name: "Dr. Ashik Ikbal", specialization: "MD, Critical Care Expert" },
   { name: "Dr. Priyadarshini Sannigrahi", specialization: "Paediatrician" },
   { name: "Dr. Inayat Kabir", specialization: "General Physician and Critical Care Expert" },

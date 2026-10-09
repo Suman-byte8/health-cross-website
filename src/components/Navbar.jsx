@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import logo from '../assets/logo.webp'
+import logo from '../assets/logo.png'
 import { Clock, Facebook, Instagram, MapPin, Menu, MessageCircle, Phone, X } from 'lucide-react'
 
 const navLinks = [
@@ -57,7 +57,7 @@ export default function Navbar() {
       <div className="border-b border-gray-200">
         <div className="mx-auto flex max-w-[1180px] items-center justify-between px-4 lg:px-6">
           <Link to="/" className="flex items-center gap-3 py-2.5">
-            <img src={logo} alt="Health Cross Organization" className="h-11 w-auto" />
+            <img src={logo} alt="Health Cross Home Healthcare" className="h-14 w-auto" />
           </Link>
 
           <nav className="hidden items-center lg:flex">

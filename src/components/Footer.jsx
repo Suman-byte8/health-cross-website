@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Clock, Facebook, Heart, Instagram, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 
-import logo from '../assets/logo.webp'
+import logo from '../assets/logo.png'
 
 const columns = [
   {
@@ -96,8 +96,8 @@ export default function Footer() {
               <Link to="/" className="inline-block">
                 <img
                   src={logo}
-                  alt="Health Cross Organization"
-                  className="h-14 w-auto"
+                  alt="Health Cross Home Healthcare"
+                  className="h-16 w-auto"
                   style={{ filter: 'brightness(0) invert(1)' }}
                 />
               </Link>
