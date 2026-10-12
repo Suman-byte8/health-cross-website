@@ -31,4 +31,34 @@ export const videoTestimonials = [
     name: "",
     description: "",
   },
+  {
+    type: "testimonial",
+    title: "Patient Video Testimonial",
+    thumbnail:
+      "https://res.cloudinary.com/u6essrxt/video/upload/so_5/v1791797948/healthcross_testimonial_video_3.jpg",
+    video:
+      "https://res.cloudinary.com/u6essrxt/video/upload/v1791797948/healthcross_testimonial_video_3.mp4",
+    name: "",
+    description: "",
+  },
+  {
+    type: "testimonial",
+    title: "Patient Video Testimonial",
+    thumbnail:
+      "https://res.cloudinary.com/u6essrxt/video/upload/so_5/v1791797948/health_cross_testimonial_video_4.jpg",
+    video:
+      "https://res.cloudinary.com/u6essrxt/video/upload/v1791797948/health_cross_testimonial_video_4.mp4",
+    name: "",
+    description: "",
+  },
+  {
+    type: "testimonial",
+    title: "Patient Video Testimonial",
+    thumbnail:
+      "https://res.cloudinary.com/u6essrxt/video/upload/so_5/v1791797948/health_cross_testimonial_video_5.jpg",
+    video:
+      "https://res.cloudinary.com/u6essrxt/video/upload/v1791797948/health_cross_testimonial_video_5.mp4",
+    name: "",
+    description: "",
+  },
 ];

@@ -149,9 +149,9 @@ export const plansData = [
 // client requirement) and is consumed by the Clinical Team section directly.
 
 export const statsData = [
-  { value: "1,000+", label: "Patients served" },
+  { value: "10,000+", label: "Patients served" },
   { value: "30+", label: "Professionals" },
-  { value: "5,00+", label: "Home visits" },
+  { value: "5,000+", label: "Home visits" },
   { value: "3+", label: "Years excellence" },
 ];
 

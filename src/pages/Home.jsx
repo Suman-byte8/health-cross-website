@@ -9,7 +9,10 @@ import VideoTestimonialsSection from "../components/home/VideoTestimonialsSectio
 import StatsSection from "../components/home/StatsSection";
 import GoogleReviewsSection from "../components/home/GoogleReviewsSection";
 import MedicalEquipmentSection from "../components/home/MedicalEquipmentSection";
-import AwarenessVideosSection from "../components/home/AwarenessVideosSection";
+// Awareness videos: hidden on the home page for now (per client request) —
+// re-add the import and the <AwarenessVideosSection /> line below once
+// there's content to show.
+// import AwarenessVideosSection from "../components/home/AwarenessVideosSection";
 import LatestBlogsSection from "../components/home/LatestBlogsSection";
 import HomeCtaSection from "../components/home/HomeCtaSection";
 import Seo from "../components/common/Seo";
@@ -33,7 +36,7 @@ export default function Home() {
       <StatsSection />
       <GoogleReviewsSection />
       <MedicalEquipmentSection />
-      <AwarenessVideosSection />
+      {/* <AwarenessVideosSection /> */}
       <LatestBlogsSection />
       <HomeCtaSection />
     </div>

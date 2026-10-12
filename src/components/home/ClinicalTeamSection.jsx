@@ -33,8 +33,17 @@ const ClinicalTeamSection = () => {
                 {initials(doctor.name)}
               </span>
               <h3 className="font-bold text-sm leading-tight">{doctor.name}</h3>
-              <div className="mt-1 text-xs font-semibold text-[#0d7055]">
-                {doctor.specialization}
+              {doctor.degree && (
+                <span className="mt-2 inline-flex items-center rounded-full bg-[#e5f3ef] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#0d7055]">
+                  {doctor.degree}
+                </span>
+              )}
+              <div className={doctor.degree ? "mt-1.5" : "mt-1"}>
+                {doctor.roles.map((role) => (
+                  <div key={role} className="text-xs font-semibold leading-snug text-[#1a1a1a]/70">
+                    {role}
+                  </div>
+                ))}
               </div>
             </article>
           ))}
