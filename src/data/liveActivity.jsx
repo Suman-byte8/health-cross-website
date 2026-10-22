@@ -1,12 +1,14 @@
 // Copy for the bottom-left "live" activity bar. The messages cycle in order;
 // the "person" entry picks a random name/area from the lists below each time.
+// The two text lines mirror the real totals in `statsData` (homeData.jsx) —
+// keep them in sync if those figures change.
 //
-// NOTE: the "10 new patients today" line and the names are illustrative
-// placeholders — replace them with real, current figures (or remove the
-// entries) before relying on them as social proof.
+// NOTE: the names/areas in the "person" entry are illustrative placeholders —
+// replace them with real, current examples (or remove the entry) before
+// relying on them as social proof.
 export const liveActivityMessages = [
-  { type: "text", text: "We have served 1000+ homes" },
-  { type: "text", text: "We served 10 new patients today" },
+  { type: "text", text: "We've served 10,000+ patients" },
+  { type: "text", text: "1,500+ home visits and counting" },
   { type: "person" },
 ];
 
