@@ -1,4 +1,4 @@
-import { doctors } from "../../data/doctors";
+import { careCoordinators, doctors } from "../../data/doctors";
 import SectionHeading from "../common/SectionHeading";
 
 const initials = (name) =>
@@ -32,22 +32,52 @@ const ClinicalTeamSection = () => {
               >
                 {initials(doctor.name)}
               </span>
-              <h3 className="font-bold text-sm leading-tight">{doctor.name}</h3>
-              {doctor.degree && (
-                <span className="mt-2 inline-flex items-center rounded-full bg-[#e5f3ef] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#0d7055]">
-                  {doctor.degree}
-                </span>
-              )}
-              <div className={doctor.degree ? "mt-1.5" : "mt-1"}>
+              <div>
                 {doctor.roles.map((role) => (
-                  <div key={role} className="text-xs font-semibold leading-snug text-[#1a1a1a]/70">
+                  <div
+                    key={role}
+                    className="text-[11px] font-bold uppercase leading-snug tracking-wide text-[#0d7055]"
+                  >
                     {role}
                   </div>
                 ))}
               </div>
+              <h3 className="mt-1 font-bold text-sm leading-tight">{doctor.name}</h3>
+              {doctor.degree && (
+                <div className="mt-1.5 text-xs font-semibold text-[#1a1a1a]/55">
+                  {doctor.degree}
+                  {doctor.abbr ? ` (${doctor.abbr})` : ""}
+                </div>
+              )}
             </article>
           ))}
         </div>
+
+        {careCoordinators.length > 0 && (
+          <div className="mt-6 border-t border-gray-100 pt-6">
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              {careCoordinators.map((person) => (
+                <div
+                  key={person.name}
+                  className="flex items-center gap-3 rounded-xl border border-[#0d7055]/15 bg-[#f4f8f6] px-5 py-3"
+                >
+                  <span
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-sm font-bold text-[#0d7055] ring-2 ring-[#0d7055]/15"
+                    aria-hidden="true"
+                  >
+                    {initials(person.name)}
+                  </span>
+                  <div className="text-left">
+                    <div className="text-[11px] font-bold uppercase leading-snug tracking-wide text-[#0d7055]">
+                      {person.role}
+                    </div>
+                    <div className="text-sm font-bold leading-tight">{person.name}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
