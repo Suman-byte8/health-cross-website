@@ -45,18 +45,4 @@ export const googleReviews = [
     date: "",
     source: "Google",
   },
-  {
-    name: "Subrajyoti Ghosh",
-    rating: 5,
-    text: "Dr Iqbal, Dr. Kabir are very responsible, prompt in acting on medical reports. They are truly compassionate. Their caring nature and dedication make treatment highly reliable and trustworthy. Highly recommended.",
-    date: "",
-    source: "Google",
-  },
-  {
-    name: "Arpita Ghosal",
-    rating: 5,
-    text: "Every helping hand in healthcare brings a little more comfort to someone in need. Dr Iqbal and Kabir are such a humble person I had ever met, they had taken care of my parents like their own. Their service for the Senior citizen is really very satisfying, any service regarding health I can fully rely on them.",
-    date: "",
-    source: "Google",
-  },
 ];

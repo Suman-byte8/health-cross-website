@@ -20,5 +20,4 @@ export const doctors = [
   { name: "Dr. Shahid Aziz", roles: ["Gastroenterologist"] },
   { name: "Dr. Ashik Ikbal", degree: "MD", roles: ["Critical Care Expert"] },
   { name: "Dr. Priyadarshini Sannigrahi", roles: ["Paediatrician"] },
-  { name: "Dr. Inayat Kabir", roles: ["Clinical Co-ordinator"] },
 ];
