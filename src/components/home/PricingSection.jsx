@@ -12,7 +12,7 @@ const PricingSection = () => {
           subtitle="Transparent, verified pricing. No hidden fees. Pause or upgrade anytime."
         />
 
-        <div className="mx-auto mt-8 grid gap-6 max-w-[1040px] sm:grid-cols-2">
+        <div className="mx-auto mt-8 grid gap-6 max-w-[860px] md:grid-cols-2">
           {plansData.map((plan) => (
             <div
               key={plan.name}
