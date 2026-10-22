@@ -21,13 +21,15 @@ export const googleRatingSummary = {
 
 // Real Google reviews supplied by the client. Text is reproduced as given,
 // with only light punctuation/capitalization cleanup for readability — no
-// wording added, removed, or reworded. Add further reviews here as the
-// client supplies them.
+// wording added or reworded. Reviews over ~50 words are trimmed (cutting
+// redundant clauses, not changing meaning) to keep the card layout from
+// breaking; nothing is invented. Add further reviews here as the client
+// supplies them.
 export const googleReviews = [
   {
     name: "Dipwanita Chatterjee",
     rating: 5,
-    text: "Dr. Iqbal is a truly genuine and compassionate doctor. He has been taking wonderful care of my elderly parents with immense patience, kindness, and dedication. He always listens carefully, explains everything in simple terms, and never recommends unnecessary treatments. His genuine concern for his patients is evident in every interaction. We are deeply grateful for his care and highly recommend him.",
+    text: "Dr. Iqbal is a truly genuine and compassionate doctor. He has been taking wonderful care of my elderly parents with immense patience, kindness, and dedication. He always listens carefully and never recommends unnecessary treatments. We are deeply grateful and highly recommend him.",
     date: "",
     source: "Google",
   },
@@ -42,6 +44,13 @@ export const googleReviews = [
     name: "Abhinoy Mondal",
     rating: 5,
     text: "I'm very happy this organisation is very helpful. Late night service. Thank you Health Cross. Keep grow up. All the best.",
+    date: "",
+    source: "Google",
+  },
+  {
+    name: "Soumya Sarkar",
+    rating: 5,
+    text: "Compassionate service when we needed it most. Despite it being midnight, the team responded promptly — Dr. Kabir visited and provided excellent care. They followed up the next day with a BiPAP machine, training the family to use it. Special thanks to Dr. Ashik Ikbal and team. Highly recommended! ❤️",
     date: "",
     source: "Google",
   },
