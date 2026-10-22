@@ -15,7 +15,7 @@
 // CMS Integration Points documentation).
 export const doctors = [
   { name: "Dr. Priyanka Ghosh", roles: ["General Physician", "Critical Care Expert"] },
-  { name: "Dr. Subhadip Gupta", roles: ["Neurologist"] },
+  { name: "Dr. Subhadip Gupta", degree: "DM", abbr: "Neuro", roles: ["Neurologist"] },
   { name: "Dr. Neha Shabnam", roles: ["Consultant Dentist"] },
   { name: "Dr. Indranil Basak", degree: "DM", abbr: "Cardio", roles: ["Cardiologist"] },
   { name: "Dr. Kity Sarkar", roles: ["Nephrologist"] },
