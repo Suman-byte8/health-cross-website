@@ -32,23 +32,32 @@ const ClinicalTeamSection = () => {
               >
                 {initials(doctor.name)}
               </span>
-              <div>
-                {doctor.roles.map((role) => (
-                  <div
-                    key={role}
-                    className="text-[11px] font-bold uppercase leading-snug tracking-wide text-[#0d7055]"
-                  >
-                    {role}
-                  </div>
-                ))}
-              </div>
-              <h3 className="mt-1 font-bold text-sm leading-tight">{doctor.name}</h3>
+              {doctor.roles?.length > 0 && (
+                <div>
+                  {doctor.roles.map((role) => (
+                    <div
+                      key={role}
+                      className="text-[11px] font-bold uppercase leading-snug tracking-wide text-[#0d7055]"
+                    >
+                      {role}
+                    </div>
+                  ))}
+                </div>
+              )}
+              <h3 className={`font-bold text-sm leading-tight ${doctor.roles?.length ? "mt-1" : ""}`}>
+                {doctor.name}
+              </h3>
               {doctor.degree && (
                 <div className="mt-1.5 text-xs font-semibold text-[#1a1a1a]/55">
                   {doctor.degree}
                   {doctor.abbr ? ` (${doctor.abbr})` : ""}
                 </div>
               )}
+              {doctor.credentials?.map((line) => (
+                <div key={line} className="mt-1.5 text-xs font-semibold leading-snug text-[#1a1a1a]/55">
+                  {line}
+                </div>
+              ))}
             </article>
           ))}
         </div>
