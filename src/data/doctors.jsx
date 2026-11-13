@@ -1,41 +1,78 @@
-// Clinical team roster. Client requirement: NO doctor photographs anywhere —
-// cards render an initials avatar instead. Names/degrees/roles are exactly
-// as supplied by the client; do not add hospitals, experience, awards or
-// additional specialties without client confirmation.
+// Clinical team roster for the specialist directory on the Home page
+// (src/components/home/ClinicalTeamSection.jsx).
 //
-// Card layout (per client reference): role(s) shown above the name, then
-// the name, then — only when a degree was supplied — a credential line
-// below it in the standard "DEGREE (specialty)" form, e.g. "DM (Cardio)".
-// `degree` and `abbr` are optional; `roles` is one or more lines shown
-// above the name, e.g. a General Physician who is also a Critical Care
-// Expert gets two lines. `roles` itself is optional — a doctor supplied
-// with only a credentials list and no named specialty (see Dr. Sayantan
-// Debnath below) shows no title line, just the name and credentials.
+// Client requirements:
+// - NO doctor photographs, initials, avatars or silhouettes anywhere. Cards
+//   are typography-only.
+// - Names, designations and qualifications are exactly as supplied. Do not
+//   add hospitals, experience, awards, ratings or extra specialties without
+//   client confirmation. Unknown fields are left out, never filled with
+//   placeholders.
 //
-// `credentials` is an alternative to `degree`/`abbr`, for doctors whose
-// qualifications were supplied as a free-form list rather than a single
-// "DEGREE (specialty)" pair — each entry renders as its own line below
-// the name, exactly as supplied.
+// Fields:
+// - `name`           required, rendered verbatim.
+// - `specialty`      id from `specialties` below. Drives the filter chips and
+//                    the uppercase label on the card. `null` = not yet
+//                    confirmed; the doctor then appears under "All
+//                    Specialists" only, labelled "Clinical Team".
+// - `designation`    optional professional title shown under the name.
+// - `qualifications` optional list, shown comma-separated under the title.
 //
-// CMS note: this array is the future CMS "Doctors" collection in miniature —
-// each object below should map to one CMS record (see fields listed in the
-// CMS Integration Points documentation).
-export const doctors = [
-  { name: "Dr. Priyanka Ghosh", roles: ["General Physician", "Critical Care Expert"] },
-  { name: "Dr. Subhadip Gupta", degree: "DM", abbr: "Neuro", roles: ["Neurologist"] },
-  { name: "Dr. Neha Shabnam", roles: ["Consultant Dentist"] },
-  { name: "Dr. Indranil Basak", degree: "DM", abbr: "Cardio", roles: ["Cardiologist"] },
-  { name: "Dr. Kity Sarkar", roles: ["Nephrologist"] },
-  { name: "Dr. Anirban Palik", roles: ["Nephrologist"] },
-  { name: "Dr. Shahid Aziz", roles: ["Gastroenterologist"] },
-  { name: "Dr. Ashik Ikbal", degree: "MD", abbr: "Critical Care", roles: ["Critical Care Expert"] },
-  { name: "Dr. Priyadarshini Sannigrahi", roles: ["Paediatrician"] },
-  { name: "Dr. Sayantan Debnath", credentials: ["MBBS, MD, CCEBDM", "MRCP 1"] },
+// CMS note: `doctors` is the future CMS "Doctors" collection in miniature,
+// one object per CMS record.
+
+// Order here is the order of the filter chips. A specialty with no doctors
+// is hidden automatically. `aliases` are search-only keywords (never shown).
+export const specialties = [
+  { id: "general-medicine", label: "General Medicine & Critical Care" },
+  { id: "neurology", label: "Neurology" },
+  { id: "cardiology", label: "Cardiology" },
+  { id: "nephrology", label: "Nephrology" },
+  { id: "gastroenterology", label: "Gastroenterology" },
+  { id: "dentistry", label: "Dentistry", aliases: ["dental"] },
+  { id: "pediatrics", label: "Pediatrics", aliases: ["paediatrics", "paediatrician"] },
 ];
 
-// Care-coordination staff — shown in their own row on the Clinical Team
-// section, separate from the doctors' grid above (different kind of role,
-// not a medical specialty).
+export const doctors = [
+  {
+    name: "Dr. Priyanka Ghosh",
+    specialty: "general-medicine",
+    designation: "General Physician & Critical Care Expert",
+  },
+  {
+    name: "Dr. Ashik Ikbal",
+    specialty: "general-medicine",
+    designation: "Critical Care Expert",
+    qualifications: ["MD (Critical Care)"],
+  },
+  {
+    // Specialty designation not yet confirmed by the client. Set
+    // `specialty: "general-medicine"` once it is.
+    name: "Dr. Sayantan Debnath",
+    specialty: null,
+    qualifications: ["MBBS", "MD", "CCEBDM", "MRCP 1"],
+  },
+  {
+    name: "Dr. Subhadip Gupta",
+    specialty: "neurology",
+    designation: "Neurologist",
+    qualifications: ["DM (Neurology)"],
+  },
+  {
+    name: "Dr. Indranil Basak",
+    specialty: "cardiology",
+    designation: "Cardiologist",
+    qualifications: ["DM (Cardiology)"],
+  },
+  { name: "Dr. Kity Sarkar", specialty: "nephrology", designation: "Nephrologist" },
+  { name: "Dr. Anirban Palik", specialty: "nephrology", designation: "Nephrologist" },
+  { name: "Dr. Shahid Aziz", specialty: "gastroenterology", designation: "Gastroenterologist" },
+  { name: "Dr. Neha Shabnam", specialty: "dentistry", designation: "Consultant Dentist" },
+  { name: "Dr. Priyadarshini Sannigrahi", specialty: "pediatrics", designation: "Pediatrician" },
+];
+
+// Care-coordination staff. Shown in their own panel below the directory and
+// deliberately kept out of the specialty filters (not a medical specialty).
 export const careCoordinators = [
-  { name: "Dr. Inayat Kabir", role: "Clinical Co-ordinator" },
+  { name: "Dr. Inayat Kabir", role: "Clinical Coordinator" },
 ];

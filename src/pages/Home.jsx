@@ -2,7 +2,6 @@ import HeroSection from "../components/home/HeroSection";
 import QuickServicesSection from "../components/home/QuickServicesSection";
 import BenefitsSection from "../components/home/BenefitsSection";
 import WhyChooseUsBanner from "../components/home/WhyChooseUsBanner";
-import OurTeamSection from "../components/home/OurTeamSection";
 import ClinicalTeamSection from "../components/home/ClinicalTeamSection";
 import MediaCoverageSection from "../components/home/MediaCoverageSection";
 import VideoTestimonialsSection from "../components/home/VideoTestimonialsSection";
@@ -29,7 +28,6 @@ export default function Home() {
       <QuickServicesSection />
       <BenefitsSection />
       <WhyChooseUsBanner />
-      <OurTeamSection />
       <ClinicalTeamSection />
       <MediaCoverageSection />
       <VideoTestimonialsSection />

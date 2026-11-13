@@ -1,136 +1,251 @@
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, Calendar, FileText, Share2, User } from "lucide-react";
+import { ArrowLeft, Calendar, ChevronRight, Clock, User } from "lucide-react";
 import { blogs } from "../data/blogs";
-import PlaceholderMedia from "../components/common/PlaceholderMedia";
+import logo from "../assets/logo.webp";
 import Seo from "../components/common/Seo";
-import PageHeader from "../components/common/PageHeader";
+import { CategoryBadge, PostDate } from "../components/blog/BlogCard";
+import ShareArticle from "../components/blog/ShareArticle";
+import RelatedArticles from "../components/blog/RelatedArticles";
+import BlogConsultationCTA from "../components/blog/BlogConsultationCTA";
+import JsonLd from "../components/blog/JsonLd";
+import {
+  FOCUS_RING,
+  SITE_NAME,
+  absoluteUrl,
+  contentBlocks,
+  postPath,
+  readingMinutes,
+  relatedPosts,
+  toIsoDate,
+} from "../components/blog/blogUtils";
+
+const crumbLink = `rounded transition-colors hover:text-[#006B55] ${FOCUS_RING}`;
+
+const Block = ({ block }) => {
+  switch (block.type) {
+    case "h2":
+      return (
+        <h2
+          id={block.id}
+          className="ct-display mt-12 scroll-mt-28 text-[25px] font-bold leading-snug tracking-[-0.015em] text-[#073B56] md:text-[28px]"
+        >
+          {block.text}
+        </h2>
+      );
+    case "h3":
+      return (
+        <h3
+          id={block.id}
+          className="ct-display mt-9 scroll-mt-28 text-[20px] font-bold leading-snug text-[#122B39] md:text-[22px]"
+        >
+          {block.text}
+        </h3>
+      );
+    case "ul":
+    case "ol": {
+      const List = block.type;
+      return (
+        <List
+          className={`mt-6 space-y-2.5 pl-6 marker:text-[#006B55] ${block.type === "ul" ? "list-disc" : "list-decimal"}`}
+        >
+          {block.items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </List>
+      );
+    }
+    default:
+      return <p className="mt-6 first:mt-0">{block.text}</p>;
+  }
+};
 
 export default function BlogDetail() {
   const { slug } = useParams();
-  const post = blogs.find((v) => v.slug === slug);
+  const post = blogs.find((p) => p.slug === slug);
 
   if (!post) {
     return (
-      <div className="bg-[#fafbf9] text-[#1a1a1a] min-h-[60vh]">
-        <div className="mx-auto max-w-[720px] px-4 py-16 text-center sm:px-6">
-          <h1 className="text-2xl font-bold">Post not found</h1>
-          <p className="mt-2 text-sm text-[#1a1a1a]/60">
-            This blog post may have been removed or the link is incorrect.
+      <div className="bg-[#F8FAFC] text-[#122B39]">
+        <Seo title="Article not found" description="This article may have moved or the link is incorrect." path={`/blogs/${slug}`} />
+        <div className="mx-auto max-w-[720px] px-5 py-20 text-center sm:px-8">
+          <h1 className="ct-display text-[28px] font-bold text-[#073B56]">Article not found</h1>
+          <p className="mt-3 text-[15px] text-[#556479]">
+            This article may have moved or the link is incorrect.
           </p>
           <Link
             to="/blogs"
-            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-[#0d7055] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#0a5243]"
+            className={`mt-7 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#006B55] px-6 text-[14px] font-semibold text-white transition-colors hover:bg-[#08765C] ${FOCUS_RING}`}
           >
-            <ArrowLeft className="h-4 w-4" /> Back to Blogs
+            <ArrowLeft aria-hidden="true" className="h-4 w-4" /> Back to All Articles
           </Link>
         </div>
       </div>
     );
   }
 
-  const related = blogs.filter((v) => v.slug !== post.slug).slice(0, 3);
+  const blocks = contentBlocks(post);
+  const toc = blocks.filter((b) => b.type === "h2");
+  const minutes = readingMinutes(blocks);
+  const related = relatedPosts(post, blogs);
+  const url = absoluteUrl(postPath(post));
+  const published = toIsoDate(post.date);
+  const modified = toIsoDate(post.updated) ?? published;
 
-  const handleShare = async () => {
-    const shareData = { title: post.title, text: post.excerpt, url: window.location.href };
-    if (navigator.share) {
-      try {
-        await navigator.share(shareData);
-      } catch {
-        // user cancelled — no action needed
-      }
-    } else if (navigator.clipboard) {
-      await navigator.clipboard.writeText(window.location.href);
-    }
-  };
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.excerpt,
+      ...(post.image && { image: [absoluteUrl(post.image)] }),
+      ...(published && { datePublished: published, dateModified: modified }),
+      articleSection: post.category,
+      url,
+      mainEntityOfPage: { "@type": "WebPage", "@id": url },
+      // Only a verified, named author is credited; otherwise the
+      // organisation that published the post is.
+      author: post.author
+        ? { "@type": "Person", name: post.author }
+        : { "@type": "Organization", name: SITE_NAME, url: absoluteUrl("/") },
+      publisher: {
+        "@type": "Organization",
+        name: SITE_NAME,
+        logo: { "@type": "ImageObject", url: absoluteUrl(logo) },
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+        { "@type": "ListItem", position: 2, name: "Health Insights", item: absoluteUrl("/blogs") },
+        { "@type": "ListItem", position: 3, name: post.title, item: url },
+      ],
+    },
+  ];
 
   return (
-    <div className="bg-[#fafbf9] text-[#1a1a1a]">
-      <Seo title={post.title} description={post.excerpt} path={`/blogs/${post.slug}`} />
-      <PageHeader
-        title="Blogs & Updates"
-        crumbs={[{ label: "Blog", to: "/blogs" }, { label: post.category }]}
+    <div className="bg-[#F8FAFC] text-[#122B39]">
+      <Seo
+        title={post.seoTitle ?? post.title}
+        description={post.seoDescription ?? post.excerpt}
+        path={postPath(post)}
+        image={post.image}
+        type="article"
       />
+      <JsonLd data={structuredData} />
 
-      <article className="mx-auto max-w-[820px] px-4 py-10 sm:px-6 lg:py-14">
-        <Link
-          to="/blogs"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-[#0d7055] hover:underline"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" /> Back to Blogs
-        </Link>
+      <article>
+        <header className="border-b border-[#E3EEEA] bg-gradient-to-b from-white to-[#EFF8F5]/70">
+          <div className="mx-auto max-w-[880px] px-5 pb-10 pt-8 sm:px-8 md:pb-12 md:pt-10">
+            <nav aria-label="Breadcrumb">
+              <ol className="flex flex-wrap items-center gap-1.5 text-[13px] text-[#556479]">
+                <li>
+                  <Link to="/" className={crumbLink}>Home</Link>
+                </li>
+                <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
+                <li>
+                  <Link to="/blogs" className={crumbLink}>Health Insights</Link>
+                </li>
+                <li aria-hidden="true"><ChevronRight className="h-3.5 w-3.5" /></li>
+                <li aria-current="page" className="font-medium text-[#122B39]">{post.title}</li>
+              </ol>
+            </nav>
 
-        <span className="mt-6 inline-flex w-fit items-center rounded-full bg-[#e5f3ef] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-[#0d7055]">
-          {post.category}
-        </span>
-        <h1 className="mt-3 text-[28px] font-bold leading-tight tracking-tight lg:text-[38px]">
-          {post.title}
-        </h1>
+            {post.category && (
+              <div className="mt-7">
+                <CategoryBadge>{post.category}</CategoryBadge>
+              </div>
+            )}
 
-        <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-[#1a1a1a]/50">
-          {post.date && (
-            <span className="flex items-center gap-1.5">
-              <Calendar className="h-3.5 w-3.5" /> {post.date}
-            </span>
+            <h1 className="ct-display mt-4 text-[30px] font-bold leading-[1.14] tracking-[-0.025em] text-balance text-[#073B56] sm:text-[38px] lg:text-[44px]">
+              {post.title}
+            </h1>
+
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[14px] text-[#556479]">
+              {post.date && (
+                <span className="flex items-center gap-1.5">
+                  <Calendar aria-hidden="true" className="h-4 w-4" /> <PostDate date={post.date} />
+                </span>
+              )}
+              {post.updated && (
+                <span>
+                  Updated <PostDate date={post.updated} />
+                </span>
+              )}
+              {post.author && (
+                <span className="flex items-center gap-1.5">
+                  <User aria-hidden="true" className="h-4 w-4" /> {post.author}
+                </span>
+              )}
+              <span className="flex items-center gap-1.5">
+                <Clock aria-hidden="true" className="h-4 w-4" /> {minutes} min read
+              </span>
+            </div>
+          </div>
+        </header>
+
+        {post.image && (
+          <div className="mx-auto max-w-[1040px] px-5 pt-8 sm:px-8 md:pt-10">
+            <img
+              src={post.image}
+              alt={post.imageAlt ?? post.title}
+              width={post.imageWidth}
+              height={post.imageHeight}
+              fetchPriority="high"
+              decoding="async"
+              className="h-auto w-full rounded-[20px] border border-[#E2E8F0] bg-[#EFF8F5]"
+            />
+          </div>
+        )}
+
+        <div className="mx-auto max-w-[760px] px-5 pb-14 pt-10 sm:px-8 md:pb-16 md:pt-12">
+          {toc.length >= 3 && (
+            <nav
+              aria-labelledby="toc-heading"
+              className="mb-10 rounded-[16px] border border-[#E2E8F0] bg-white p-5 sm:p-6"
+            >
+              <h2 id="toc-heading" className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#556479]">
+                In this article
+              </h2>
+              <ol className="mt-3 space-y-1">
+                {toc.map((h) => (
+                  <li key={h.id}>
+                    <a
+                      href={`#${h.id}`}
+                      className={`inline-flex min-h-9 items-center rounded text-[15px] font-medium text-[#006B55] hover:underline ${FOCUS_RING}`}
+                    >
+                      {h.text}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
           )}
-          {post.author && (
-            <span className="flex items-center gap-1.5">
-              <User className="h-3.5 w-3.5" /> {post.author}
-            </span>
-          )}
-          <button
-            type="button"
-            onClick={handleShare}
-            className="flex items-center gap-1.5 font-semibold text-[#0d7055] transition hover:underline"
-          >
-            <Share2 className="h-3.5 w-3.5" /> Share
-          </button>
-        </div>
 
-        <div className="mt-6 overflow-hidden rounded-xl">
-          {post.image ? (
-            <img src={post.image} alt={post.title} className="w-full object-cover" />
-          ) : (
-            <PlaceholderMedia icon={FileText} label="Cover image coming soon" aspect="aspect-[16/9]" />
-          )}
-        </div>
+          <div className="text-[17px] leading-[1.8] text-[#273C4B] md:text-[18px]">
+            {blocks.map((block, index) => (
+              <Block key={block.id ?? index} block={block} />
+            ))}
+          </div>
 
-        <div className="prose-blog mt-8 space-y-4 text-[15px] leading-7 text-[#1a1a1a]/80">
-          {(Array.isArray(post.content) ? post.content : [post.content]).map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+          <footer className="mt-12 flex flex-col gap-6 border-t border-[#E2E8F0] pt-8 sm:flex-row sm:items-end sm:justify-between">
+            <ShareArticle title={post.title} url={url} />
+            <Link
+              to="/blogs"
+              className={`inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full text-[14.5px] font-semibold text-[#006B55] transition-colors hover:text-[#073B56] ${FOCUS_RING}`}
+            >
+              <ArrowLeft aria-hidden="true" className="h-4 w-4" /> Back to All Articles
+            </Link>
+          </footer>
         </div>
       </article>
 
-      {related.length > 0 && (
-        <div className="border-t border-gray-200 bg-white py-10 lg:py-14">
-          <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
-            <h2 className="text-lg font-bold">Related Blogs</h2>
-            <div className="mt-5 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-              {related.map((item) => (
-                <Link
-                  key={item.slug}
-                  to={`/blogs/${item.slug}`}
-                  className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-[#fafbf9] shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-                >
-                  {item.image ? (
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      loading="lazy"
-                      className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <PlaceholderMedia icon={FileText} label="Cover image coming soon" aspect="aspect-[16/10]" />
-                  )}
-                  <div className="p-4">
-                    <h3 className="text-[14px] font-bold leading-tight">{item.title}</h3>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+      <RelatedArticles posts={related} category={post.category} />
+
+      <div className="mx-auto max-w-[1200px] px-5 pb-16 pt-12 sm:px-8 md:pb-20 md:pt-16 lg:px-10">
+        <BlogConsultationCTA />
+      </div>
     </div>
   );
 }

@@ -9,7 +9,19 @@ import everyLifeHasAStoryCover from "../assets/blogg/every-life-has-a-story.png"
 //
 // CMS note: see CMS Integration Points documentation for the future "Blogs"
 // collection shape.
-export const blogs = [
+//
+// `blogs` is exported sorted newest-first by `date` (the /blogs page
+// features blogs[0]; the homepage teaser shows the first three), so posts
+// can be added here in any order.
+//
+// Post fields: slug, title, excerpt, content, image, imageAlt (describe the
+// picture), imageWidth/imageHeight (reserve space, avoid layout shift), date,
+// optional `updated` (last real edit date), category, author (leave "" unless
+// verified — it is only shown when filled in). `content` items are plain
+// strings (paragraphs) or blocks: { type: "h2" | "h3", text } and
+// { type: "ul" | "ol", items: [...] }. Three or more h2 headings add a table
+// of contents automatically.
+const posts = [
   {
     slug: "because-every-patient-has-a-story",
     title: "Because Every Patient Has a Story",
@@ -25,6 +37,10 @@ export const blogs = [
       "That trust is not just our responsibility. It is our promise.",
     ],
     image: becauseEveryPatientCover,
+    imageAlt:
+      "A Healthcross doctor holds the hand of an elderly woman resting in bed at home while her family looks on",
+    imageWidth: 1200,
+    imageHeight: 675,
     date: "September 16, 2026",
     category: "Our Story",
     author: "",
@@ -57,8 +73,15 @@ export const blogs = [
       "HEALTHCROSS — Your Health Partner",
     ],
     image: everyLifeHasAStoryCover,
+    imageAlt:
+      "A young man sits beside a smiling elderly woman on a sofa at home, holding her hands",
+    imageWidth: 1116,
+    imageHeight: 893,
     date: "October 22, 2026",
     category: "Our Story",
     author: "",
   },
 ];
+
+const time = (post) => Date.parse(post.date) || 0;
+export const blogs = [...posts].sort((a, b) => time(b) - time(a));

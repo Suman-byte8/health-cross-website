@@ -11,9 +11,9 @@ import {
   Star,
   Users,
 } from "lucide-react";
-import officeInside from "../../assets/office_inside.png";
 import { heroWords } from "../../data/homeData";
 import HeroBanner from "./HeroBanner";
+import HeroCareAnimation from "./HeroCareAnimation";
 
 // Quick-access tiles that overlap the bottom edge of the banner.
 const quickActions = [
@@ -117,14 +117,7 @@ const HeroSection = () => {
             </div>
 
             <div className="relative">
-              <div className="mx-auto aspect-[4/3] w-full max-w-[460px] overflow-hidden rounded-2xl border border-gray-200 bg-[#f4f8f6] p-2 shadow-sm lg:ml-auto lg:mr-0">
-                <img
-                  src={officeInside}
-                  alt="Elderly care at home"
-                  className="h-full w-full rounded-xl object-cover"
-                  loading="eager"
-                />
-              </div>
+              <HeroCareAnimation />
             </div>
           </div>
         </div>
