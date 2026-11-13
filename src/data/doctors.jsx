@@ -17,6 +17,8 @@
 //                    Specialists" only, labelled "Clinical Team".
 // - `designation`    optional professional title shown under the name.
 // - `qualifications` optional list, shown comma-separated under the title.
+// - `hospital`       optional hospital affiliation, as supplied by the client.
+// - `serviceArea`    optional home-visit note, as supplied by the client.
 //
 // CMS note: `doctors` is the future CMS "Doctors" collection in miniature,
 // one object per CMS record.
@@ -38,6 +40,13 @@ export const doctors = [
     name: "Dr. Priyanka Ghosh",
     specialty: "general-medicine",
     designation: "General Physician & Critical Care Expert",
+  },
+  {
+    name: "Dr. Rupam Paul",
+    specialty: "general-medicine",
+    designation: "General Physician",
+    hospital: "Fortis Hospital",
+    serviceArea: "Home visit expert in South Kolkata zone",
   },
   {
     name: "Dr. Ashik Ikbal",

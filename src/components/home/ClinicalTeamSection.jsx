@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, Check, Search, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Building2, Check, MapPin, Search, X } from "lucide-react";
 import { careCoordinators, doctors, specialties } from "../../data/doctors";
 
 // Contact details already used across the site (HomeCtaSection,
@@ -30,7 +30,14 @@ const normalize = (value) =>
 const searchText = new Map(
   doctors.map((d) => {
     const s = specialtyById[d.specialty];
-    const parts = [d.name, d.designation, s?.label, ...(s?.aliases ?? [])];
+    const parts = [
+      d.name,
+      d.designation,
+      d.hospital,
+      d.serviceArea,
+      s?.label,
+      ...(s?.aliases ?? []),
+    ];
     return [d.name, normalize(parts.filter(Boolean).join(" "))];
   })
 );
@@ -97,6 +104,26 @@ const DoctorCard = ({ doctor }) => {
           <span className="sr-only">Qualifications: </span>
           {doctor.qualifications.join(", ")}
         </p>
+      )}
+
+      {(doctor.hospital || doctor.serviceArea) && (
+        <ul className="mt-4 space-y-1.5 text-[13.5px] leading-5 text-[#3E524D]">
+          {doctor.hospital && (
+            <li className="flex items-start gap-2">
+              <Building2 aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#006B57]/70" />
+              <span>
+                <span className="sr-only">Hospital: </span>
+                {doctor.hospital}
+              </span>
+            </li>
+          )}
+          {doctor.serviceArea && (
+            <li className="flex items-start gap-2">
+              <MapPin aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#006B57]/70" />
+              <span>{doctor.serviceArea}</span>
+            </li>
+          )}
+        </ul>
       )}
 
       <div className="mt-auto pt-6">
