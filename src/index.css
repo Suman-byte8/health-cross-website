@@ -120,7 +120,137 @@ body {
   scrollbar-width: none;
 }
 
+/* ── Clinical Team specialist directory (ClinicalTeamSection) ── */
+.ct-display {
+  font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+}
+
+.ct-reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .6s cubic-bezier(.22, .61, .36, 1), transform .6s cubic-bezier(.22, .61, .36, 1);
+}
+
+.ct-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.ct-card-wait {
+  opacity: 0;
+}
+
+.ct-card-in {
+  animation: ct-fade-up var(--ct-dur, 220ms) cubic-bezier(.22, .61, .36, 1) var(--ct-delay, 0ms) both;
+}
+
+.ct-fade {
+  animation: ct-fade 200ms ease-out both;
+}
+
+@keyframes ct-fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes ct-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Mobile chip scroller: soft fade on the edges hints at more chips. */
+@media (max-width: 767px) {
+  .ct-chip-scroller {
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 16px, #000 calc(100% - 28px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 16px, #000 calc(100% - 28px), transparent 100%);
+  }
+}
+
+/* ── Home hero illustration (HeroCareAnimation) ── */
+.hero-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: hero-ring 3.6s ease-out infinite;
+}
+
+@keyframes hero-ring {
+  0% { transform: scale(0.8); opacity: 0.9; }
+  100% { transform: scale(1.75); opacity: 0; }
+}
+
+.hero-cross {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-beat 2.4s ease-in-out infinite;
+}
+
+@keyframes hero-beat {
+  0%, 40%, 100% { transform: scale(1); }
+  10% { transform: scale(1.1); }
+  20% { transform: scale(1); }
+  30% { transform: scale(1.06); }
+}
+
+.hero-ecg {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 0;
+  animation: hero-ecg 3.2s linear infinite;
+}
+
+@keyframes hero-ecg {
+  0% { stroke-dashoffset: 100; }
+  60% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -100; }
+}
+
+.hero-float {
+  animation: hero-float 3.2s ease-in-out var(--hero-delay, 0s) infinite alternate;
+}
+
+@keyframes hero-float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-6px); }
+}
+
+/* ── Blog pages: results fade in after filter/page changes ── */
+.blog-in {
+  animation: ct-fade-up 240ms cubic-bezier(.22, .61, .36, 1) var(--blog-delay, 0ms) both;
+}
+
+/* ── Home closing CTA ("Care Should Feel Close to Home") ── */
+.cta-heartbeat {
+  transform-origin: center;
+  animation: cta-heartbeat 2.4s ease-in-out infinite;
+}
+
+@keyframes cta-heartbeat {
+  0%, 40%, 100% { transform: scale(1); }
+  10% { transform: scale(1.22); }
+  20% { transform: scale(1); }
+  30% { transform: scale(1.14); }
+}
+
+.cta-drift {
+  animation: cta-drift 14s ease-in-out infinite alternate;
+}
+
+.cta-drift-alt {
+  animation-duration: 18s;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes cta-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(40px, 24px) scale(1.12); }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .cta-heartbeat, .cta-drift, .blog-in,
+  .hero-cross, .hero-ecg, .hero-float { animation: none; }
+  .hero-ring { animation: none; opacity: 0.6; }
+  .ct-reveal, .ct-card-wait { opacity: 1; transform: none; transition: none; }
+  .ct-card-in, .ct-fade { animation: none; }
   .marquee-track { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .word { opacity: 1; transform: none; }

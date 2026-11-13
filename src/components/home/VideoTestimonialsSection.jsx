@@ -4,7 +4,6 @@ import { videoTestimonials } from "../../data/videoTestimonials";
 import { mediaVideos } from "../../data/mediaVideos";
 import PlaceholderMedia from "../common/PlaceholderMedia";
 import Modal from "../common/Modal";
-import Slider from "../common/Slider";
 import SectionHeading from "../common/SectionHeading";
 
 const FILTER_LABELS = {
@@ -57,12 +56,11 @@ const VideoTestimonialsSection = () => {
           </div>
         )}
 
-        <Slider className="mt-6">
-          {visibleVideos.map((item, index) => (
+        <div className="mx-auto mt-6 grid max-w-[880px] grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+          {visibleVideos.map((item) => (
             <article
-              key={index}
-              data-slide
-              className="w-[200px] shrink-0 snap-start overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:w-[230px] lg:w-[250px]"
+              key={item.video}
+              className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
               <button
                 type="button"
@@ -86,7 +84,7 @@ const VideoTestimonialsSection = () => {
                   </span>
                 </span>
               </button>
-              <div className="p-3.5">
+              <div className="p-3">
                 <h3 className="text-[13px] font-bold leading-tight">{item.title}</h3>
                 {item.name && (
                   <div className="mt-1 text-xs font-semibold text-[#0d7055]">{item.name}</div>
@@ -97,7 +95,7 @@ const VideoTestimonialsSection = () => {
               </div>
             </article>
           ))}
-        </Slider>
+        </div>
       </div>
 
       <Modal

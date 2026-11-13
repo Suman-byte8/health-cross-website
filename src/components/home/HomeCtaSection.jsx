@@ -15,9 +15,13 @@ const HomeCtaSection = () => {
   return (
     <section id="contact" className="bg-white py-10 lg:py-12">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#e5f3ef] via-white to-[#fff8e1] border border-gray-200 p-8 text-center lg:p-10">
+        <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#e5f3ef] via-white to-[#fff8e1] border border-gray-200 p-8 text-center lg:p-10">
+          {/* Soft drifting glows (decorative, paused for reduced motion). */}
+          <span aria-hidden="true" className="cta-drift gradient-blob -z-10 -left-16 -top-20 h-56 w-56 bg-[#0d7055]/25" />
+          <span aria-hidden="true" className="cta-drift cta-drift-alt gradient-blob -z-10 -bottom-24 -right-12 h-64 w-64 bg-[#7fd1b3]/35" />
+
           <div className="inline-flex items-center gap-2 rounded-full bg-white border border-gray-200 px-3 py-1 text-xs font-bold text-[#0d7055]">
-            <Heart className="h-3.5 w-3.5" /> Elderly Care Focus
+            <Heart className="cta-heartbeat h-3.5 w-3.5" /> Elderly Care Focus
           </div>
 
           <h2 className="mx-auto mt-4 max-w-xl text-[28px] font-bold lg:text-[36px] leading-tight tracking-tight">

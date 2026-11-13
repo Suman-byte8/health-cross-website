@@ -13,28 +13,31 @@ const CareServicesSection = () => {
           subtitle="Three focused programs, each delivered by trained clinicians and coordinated through a single point of contact."
         />
 
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
+        <div className="mx-auto mt-8 grid max-w-[380px] gap-5 md:max-w-[960px] md:grid-cols-3">
           {serviceCardsData.map((card) => {
             const BadgeIcon = card.icon;
             return (
               <article
                 key={card.title}
-                className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-2 hover:shadow-xl"
+                className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1.5 hover:shadow-xl"
               >
-                {/* Increased image area size to aspect-[3/4] to fit the full height of portrait images */}
-                <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#f4f8f6]">
+                {/* 7:8 frame sits between the photos' own ratios (≈0.80–0.91),
+                    so object-cover shows nearly the whole image. The badge is
+                    bottom-left so it doesn't cover the logo in the photos. */}
+                <div className="relative aspect-[7/8] w-full overflow-hidden bg-[#f4f8f6]">
                   <img
                     src={card.image}
                     alt={card.badge}
-                    className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
+                    loading="lazy"
+                    className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.03]"
                   />
-                  <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-xs font-bold backdrop-blur text-[#1a1a1a] shadow-sm">
+                  <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-xs font-bold backdrop-blur text-[#1a1a1a] shadow-sm">
                     <BadgeIcon className="h-3.5 w-3.5 text-[#0d7055]" />{" "}
                     {card.badge}
                   </span>
                 </div>
-                <div className="p-5 flex flex-col flex-1">
-                  <h3 className="text-[17px] font-bold">{card.title}</h3>
+                <div className="p-4 flex flex-col flex-1">
+                  <h3 className="text-[16px] font-bold">{card.title}</h3>
                   <div className="flex-1">
                     <p className="mt-1.5 text-sm leading-5 text-[#1a1a1a]/65">
                       {card.description}

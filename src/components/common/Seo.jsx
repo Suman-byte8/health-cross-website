@@ -40,17 +40,21 @@ function upsertCanonical(href) {
  * document.title, the meta description and canonical URL in sync with the
  * current route on mount/update.
  */
-const Seo = ({ title, description, path = "" }) => {
+const Seo = ({ title, description, path = "", image, type = "website" }) => {
   useEffect(() => {
     document.title = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
     upsertMeta("description", description);
     upsertOgMeta("og:title", title ? `${title} | ${SITE_NAME}` : SITE_NAME);
     upsertOgMeta("og:description", description);
+    upsertOgMeta("og:type", type);
 
     if (typeof window !== "undefined") {
-      upsertCanonical(`${window.location.origin}${path}`);
+      const url = `${window.location.origin}${path}`;
+      upsertCanonical(url);
+      upsertOgMeta("og:url", url);
+      if (image) upsertOgMeta("og:image", new URL(image, window.location.origin).href);
     }
-  }, [title, description, path]);
+  }, [title, description, path, image, type]);
 
   return null;
 };

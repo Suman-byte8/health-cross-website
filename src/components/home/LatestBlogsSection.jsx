@@ -29,10 +29,10 @@ const LatestBlogsSection = () => {
                     src={post.image}
                     alt={post.title}
                     loading="lazy"
-                    className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-105"
+                    className="aspect-video w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                 ) : (
-                  <PlaceholderMedia icon={FileText} label="Cover image coming soon" aspect="aspect-[16/10]" />
+                  <PlaceholderMedia icon={FileText} label="Cover image coming soon" aspect="aspect-video" />
                 )}
                 <div className="flex flex-1 flex-col p-5">
                   <span className="inline-flex w-fit items-center rounded-full bg-[#e5f3ef] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-[#0d7055]">

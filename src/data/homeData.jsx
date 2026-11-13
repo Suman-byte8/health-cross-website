@@ -1,6 +1,6 @@
-import serviceImg1 from '../assets/service_image_1.png'
-import serviceImg2 from '../assets/service_image_2.png'
-import serviceImg3 from '../assets/service_image_3.png'
+import serviceImg1 from '../assets/service-image-1.webp'
+import serviceImg2 from '../assets/service-image-2.webp'
+import serviceImg3 from '../assets/service-image-3.webp'
 
 import {
   Activity,
