@@ -12,7 +12,6 @@ import MedicalEquipmentSection from "../components/home/MedicalEquipmentSection"
 // re-add the import and the <AwarenessVideosSection /> line below once
 // there's content to show.
 // import AwarenessVideosSection from "../components/home/AwarenessVideosSection";
-import LatestBlogsSection from "../components/home/LatestBlogsSection";
 import HomeCtaSection from "../components/home/HomeCtaSection";
 import Seo from "../components/common/Seo";
 
@@ -35,7 +34,6 @@ export default function Home() {
       <GoogleReviewsSection />
       <MedicalEquipmentSection />
       {/* <AwarenessVideosSection /> */}
-      <LatestBlogsSection />
       <HomeCtaSection />
     </div>
   );
