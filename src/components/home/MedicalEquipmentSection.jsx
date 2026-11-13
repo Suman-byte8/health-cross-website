@@ -17,11 +17,11 @@ const MedicalEquipmentSection = () => {
           subtitle="A look at the equipment our clinical team brings into your home for monitoring, respiratory support and patient care."
         />
 
-        <div className="mt-8 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {medicalEquipment.map((item, index) => (
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          {medicalEquipment.map((item) => (
             <article
-              key={index}
-              className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              key={item.name}
+              className="group flex w-[calc(50%-8px)] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:w-[calc(33.333%-10.667px)] lg:w-[calc(20%-12.8px)]"
             >
               <button
                 type="button"
@@ -30,25 +30,37 @@ const MedicalEquipmentSection = () => {
                 aria-label={`View details for ${item.name}`}
               >
                 {item.image ? (
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    loading="lazy"
-                    className="aspect-video w-full object-cover transition duration-500 group-hover:scale-105"
-                  />
+                  // Photos come in mixed ratios. Every card uses the same 4:3
+                  // frame: the full photo is centred (never cropped) over a
+                  // blurred copy of itself that fills the leftover space.
+                  <div className="relative aspect-[4/3] overflow-hidden bg-[#eef4f1]">
+                    <img
+                      src={item.image}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full scale-125 object-cover opacity-70 blur-xl"
+                    />
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      loading="lazy"
+                      className="relative h-full w-full object-contain transition duration-500 group-hover:scale-[1.04]"
+                    />
+                  </div>
                 ) : (
-                  <PlaceholderMedia icon={Stethoscope} label="Equipment photo coming soon" aspect="aspect-video" />
+                  <PlaceholderMedia icon={Stethoscope} label="Equipment photo coming soon" aspect="aspect-[4/3]" />
                 )}
-                <span className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-[#0d7055] opacity-0 shadow-sm transition group-hover:opacity-100">
-                  <ZoomIn className="h-4 w-4" />
+                <span className="absolute right-2.5 top-2.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/90 text-[#0d7055] opacity-0 shadow-sm transition group-hover:opacity-100">
+                  <ZoomIn className="h-3.5 w-3.5" />
                 </span>
               </button>
-              <div className="flex flex-1 flex-col p-4">
-                <span className="text-[11px] font-bold uppercase tracking-wide text-[#0d7055]">
+              <div className="flex flex-1 flex-col p-3">
+                <span className="text-[10.5px] font-bold uppercase tracking-wide text-[#0d7055]">
                   {item.category}
                 </span>
-                <h3 className="mt-1 text-[15px] font-bold leading-tight">{item.name}</h3>
-                <p className="mt-1.5 text-xs leading-5 text-[#1a1a1a]/60 flex-1">
+                <h3 className="mt-1 text-[14px] font-bold leading-tight">{item.name}</h3>
+                <p className="mt-1.5 line-clamp-3 flex-1 text-xs leading-5 text-[#1a1a1a]/60">
                   {item.description}
                 </p>
               </div>
@@ -70,7 +82,7 @@ const MedicalEquipmentSection = () => {
               <img
                 src={activeItem.image}
                 alt={activeItem.name}
-                className="w-full rounded-xl object-cover"
+                className="max-h-[60vh] w-full rounded-xl bg-white object-contain"
               />
             ) : (
               <PlaceholderMedia icon={Stethoscope} label="Equipment photo coming soon" aspect="aspect-[16/10]" />
