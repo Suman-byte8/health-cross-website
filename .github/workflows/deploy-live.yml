@@ -13,7 +13,9 @@
 #   FTP_USERNAME
 #   FTP_PASSWORD
 # Optional:
-#   FTP_SERVER_DIR  remote folder, must end with "/" (default: ./public_html/)
+#   FTP_SERVER_DIR  remote folder relative to the FTP login folder, must end
+#                   with "/" (default: ./ — the FTP account already opens
+#                   inside public_html, so don't add public_html again)
 
 name: Deploy to live (FTP)
 
@@ -53,4 +55,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          server-dir: ${{ secrets.FTP_SERVER_DIR || './public_html/' }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR || './' }}
