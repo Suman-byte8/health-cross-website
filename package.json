@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy:live": "git commit --allow-empty -m \"chore: deploy to live [deploy-live]\" && git push origin main"
   },
   "dependencies": {
     "lucide-react": "^0.526.0",
