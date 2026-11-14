@@ -15,6 +15,8 @@
 //                    the uppercase label on the card. `null` = not yet
 //                    confirmed; the doctor then appears under "All
 //                    Specialists" only, labelled "Clinical Team".
+// - `specialtyLabel` optional override for the uppercase card label only
+//                    (the doctor still sits under `specialty`'s filter chip).
 // - `designation`    optional professional title shown under the name.
 // - `qualifications` optional list, shown comma-separated under the title.
 // - `hospital`       optional hospital affiliation, as supplied by the client.
@@ -27,6 +29,7 @@
 // is hidden automatically. `aliases` are search-only keywords (never shown).
 export const specialties = [
   { id: "general-medicine", label: "General Medicine & Critical Care" },
+  { id: "pulmonology", label: "Pulmonology", aliases: ["chest medicine", "pulmonologist"] },
   { id: "neurology", label: "Neurology" },
   { id: "cardiology", label: "Cardiology" },
   { id: "nephrology", label: "Nephrology" },
@@ -38,21 +41,23 @@ export const specialties = [
 export const doctors = [
   {
     name: "Dr. Priyanka Ghosh",
-    specialty: "general-medicine",
-    designation: "General Physician & Critical Care Expert",
+    specialty: "pulmonology",
+    designation: "Pulmonologist",
+    qualifications: ["MD Chest Medicine"],
   },
   {
     name: "Dr. Rupam Paul",
     specialty: "general-medicine",
+    specialtyLabel: "General Physician",
     designation: "General Physician",
     hospital: "Fortis Hospital",
-    serviceArea: "Home visit expert in South Kolkata zone",
+    serviceArea: "Home Visit Expert",
   },
   {
     name: "Dr. Ashik Ikbal",
     specialty: "general-medicine",
     designation: "Critical Care Expert",
-    qualifications: ["MD (Critical Care)"],
+    qualifications: ["MBBS", "MD", "CCEBDM"],
   },
   {
     // Specialty designation not yet confirmed by the client. Set
@@ -84,4 +89,5 @@ export const doctors = [
 // deliberately kept out of the specialty filters (not a medical specialty).
 export const careCoordinators = [
   { name: "Dr. Inayat Kabir", role: "Clinical Coordinator" },
+  { name: "Biki Saha", role: "Critical Care Clinical Coordinator" },
 ];

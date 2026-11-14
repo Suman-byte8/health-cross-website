@@ -35,6 +35,7 @@ const searchText = new Map(
       d.designation,
       d.hospital,
       d.serviceArea,
+      d.specialtyLabel,
       s?.label,
       ...(s?.aliases ?? []),
     ];
@@ -75,7 +76,8 @@ function useInView() {
 }
 
 const DoctorCard = ({ doctor }) => {
-  const label = specialtyById[doctor.specialty]?.label ?? "Clinical Team";
+  const label =
+    doctor.specialtyLabel ?? specialtyById[doctor.specialty]?.label ?? "Clinical Team";
   const enquiry = whatsappHref(
     `Hello Health Cross, I would like to enquire about a consultation with ${doctor.name}` +
       (doctor.designation ? ` (${doctor.designation}).` : ".")
