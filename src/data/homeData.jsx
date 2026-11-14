@@ -150,7 +150,7 @@ export const plansData = [
 export const statsData = [
   { value: "10,000+", label: "Patients served" },
   { value: "70+", label: "Professionals" },
-  { value: "1,500+", label: "Home visits" },
+  { value: "2,500+", label: "Home visits" },
   { value: "3+", label: "Years excellence" },
 ];
 

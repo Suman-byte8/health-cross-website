@@ -8,7 +8,7 @@
 // relying on them as social proof.
 export const liveActivityMessages = [
   { type: "text", text: "We've served 10,000+ patients" },
-  { type: "text", text: "1,500+ home visits and counting" },
+  { type: "text", text: "2,500+ home visits and counting" },
   { type: "person" },
 ];
 
