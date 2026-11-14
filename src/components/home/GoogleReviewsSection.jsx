@@ -1,6 +1,5 @@
 import { ExternalLink, Quote, Star } from "lucide-react";
 import { googleRatingSummary, googleReviews } from "../../data/googleReviews";
-import Slider from "../common/Slider";
 
 const StarRow = ({ count = 5, className = "h-4 w-4" }) => (
   <div className="flex gap-0.5" aria-hidden="true">
@@ -21,7 +20,7 @@ const GoogleReviewsSection = () => {
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
         <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
           {/* Trust bar */}
-          <div className="flex flex-col gap-5 border-b border-gray-100 p-6 sm:flex-row sm:items-center sm:justify-between lg:p-8">
+          <div className="flex flex-col gap-5 p-6 sm:flex-row sm:items-center sm:justify-between lg:p-8">
             <div className="flex items-center gap-4">
               <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#e5f3ef] text-[#0d7055] text-xl font-bold">
                 G
@@ -51,40 +50,55 @@ const GoogleReviewsSection = () => {
               View all reviews on Google <ExternalLink className="h-4 w-4" />
             </a>
           </div>
-
-          {/* Featured reviews */}
-          <div className="p-6 lg:p-8">
-            <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-              <h2 className="text-lg font-bold text-[#1a1a1a]">
-                What patients & families say
-              </h2>
-            </div>
-
-            <Slider>
-              {googleReviews.map((review, index) => (
-                <article
-                  key={index}
-                  data-slide
-                  className="flex w-[280px] shrink-0 snap-start flex-col rounded-xl border border-gray-200 bg-[#fafbf9] p-5 sm:w-[320px]"
-                >
-                  <Quote className="h-5 w-5 text-[#0d7055]/40" aria-hidden="true" />
-                  <p className="mt-2 flex-1 text-sm leading-6 text-[#1a1a1a]/75">
-                    {review.text}
-                  </p>
-                  <div className="mt-4 flex items-center justify-between gap-2">
-                    <div>
-                      <div className="text-sm font-bold text-[#1a1a1a]">{review.name}</div>
-                      {review.date && (
-                        <div className="text-xs text-[#1a1a1a]/45">{review.date}</div>
-                      )}
-                    </div>
-                    <StarRow count={review.rating} className="h-3.5 w-3.5" />
-                  </div>
-                </article>
-              ))}
-            </Slider>
-          </div>
         </div>
+
+        <h2 className="mb-5 mt-8 text-lg font-bold text-[#1a1a1a]">
+          What patients & families say
+        </h2>
+      </div>
+
+      {/* Featured reviews — full screen width */}
+      <div className="reviews-marquee marquee-hover-pause relative overflow-hidden">
+        <div
+          className="marquee-track flex w-max py-1"
+          style={{ animationDuration: `${Math.max(googleReviews.length * 7, 30)}s` }}
+        >
+          {/* Two identical copies; the track slides by -50% so the loop is seamless */}
+          {[0, 1].map((copy) => (
+            <div
+              key={copy}
+              className="flex shrink-0"
+              aria-hidden={copy === 1 ? "true" : undefined}
+            >
+              {googleReviews.map((review, index) => (
+                <div key={index} className="shrink-0 pr-5">
+                  <article className="flex h-full w-[280px] flex-col rounded-xl border border-gray-200 bg-[#fafbf9] p-5 sm:w-[320px]">
+                    <Quote className="h-5 w-5 text-[#0d7055]/40" aria-hidden="true" />
+                    <p
+                      className="mt-2 flex-1 line-clamp-4 text-sm leading-6 text-[#1a1a1a]/75"
+                      title={review.text}
+                    >
+                      {review.text}
+                    </p>
+                    <div className="mt-4 flex items-center justify-between gap-2">
+                      <div>
+                        <div className="text-sm font-bold text-[#1a1a1a]">{review.name}</div>
+                        {review.date && (
+                          <div className="text-xs text-[#1a1a1a]/45">{review.date}</div>
+                        )}
+                      </div>
+                      <StarRow count={review.rating} className="h-3.5 w-3.5" />
+                    </div>
+                  </article>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        {/* Blurred, fading edges */}
+        <div className="marquee-edge marquee-edge-left" aria-hidden="true" />
+        <div className="marquee-edge marquee-edge-right" aria-hidden="true" />
       </div>
     </section>
   );

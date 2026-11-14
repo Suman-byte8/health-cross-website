@@ -1,7 +1,7 @@
 // Google reputation data.
 //
-// `googleRatingSummary.rating` (4.8) reuses the figure already published on
-// the homepage hero badge — it is not a new/invented number.
+// `googleRatingSummary.rating` (5.0) is the overall rating set by the client;
+// the homepage hero badge shows the same figure.
 //
 // `reviewCount` and `profileUrl` are intentionally left for the client to
 // confirm/supply (their exact Google review count and their Google Business
@@ -12,7 +12,7 @@
 // CMS note: see CMS Integration Points documentation for the future
 // "Google Reviews" collection shape.
 export const googleRatingSummary = {
-  rating: 4.8,
+  rating: 5,
   outOf: 5,
   reviewCount: null, // TODO(client): confirm total Google review count
   profileUrl:
@@ -21,11 +21,24 @@ export const googleRatingSummary = {
 
 // Real Google reviews supplied by the client. Text is reproduced as given,
 // with only light punctuation/capitalization cleanup for readability — no
-// wording added or reworded. Reviews over ~50 words are trimmed (cutting
-// redundant clauses, not changing meaning) to keep the card layout from
-// breaking; nothing is invented. Add further reviews here as the client
-// supplies them.
+// wording added or reworded; nothing is invented. Long reviews can be added
+// in full — the card clamps the text to 4 lines with an ellipsis (the full
+// text shows on hover). Add further reviews here as the client supplies them.
 export const googleReviews = [
+  {
+    name: "Soumya Dey",
+    rating: 5,
+    text: "I had a wonderful experience with this home healthcare service. The staff were extremely professional, caring, supportive, and attentive throughout the entire process. They provide excellent home healthcare service with professional, caring, and well-trained staff. They provide comprehensive services, including nursing care, post-surgical care, wound dressing, medication assistance, vital signs monitoring, elderly care, and personal assistance for patients. The staff are punctual, polite, compassionate, and attentive to every patient's needs. Their dedication, cooperative management, and quality of service make home recovery much easier and more comfortable. Truly satisfied with their service. Highly recommended to anyone looking for reliable and compassionate healthcare at home.",
+    date: "",
+    source: "Google",
+  },
+  {
+    name: "Paramita Sarkar",
+    rating: 5,
+    text: "Exceptional medical care with compassion and dedication. We are deeply grateful to Dr. Ashik Ikbal and Dr. Inayat Kabir for the outstanding care given to my 83-year-old aunt. They provide almost hospital-level medical care right at home, with remarkable attention and support—even in the middle of the night when help is needed. For elderly patients and their families, such dedication is truly priceless. A friend in need is a friend indeed. Thank you for always being there when we need you most. ❤️",
+    date: "",
+    source: "Google",
+  },
   {
     name: "Dipwanita Chatterjee",
     rating: 5,

@@ -58,8 +58,36 @@ body {
   100% { transform: translateX(-50%); }
 }
 
-.marquee-paused .marquee-track {
+.marquee-paused .marquee-track,
+.marquee-hover-pause:hover .marquee-track,
+.marquee-hover-pause:focus-within .marquee-track {
   animation-play-state: paused;
+}
+
+/* Blurred, fading edges for marquee rows */
+.marquee-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: clamp(48px, 12%, 140px);
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.marquee-edge-left {
+  left: 0;
+  background: linear-gradient(to right, #fff 0%, rgb(255 255 255 / 0.6) 45%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 30%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, #000 30%, transparent 100%);
+}
+
+.marquee-edge-right {
+  right: 0;
+  background: linear-gradient(to left, #fff 0%, rgb(255 255 255 / 0.6) 45%, transparent 100%);
+  mask-image: linear-gradient(to left, #000 30%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to left, #000 30%, transparent 100%);
 }
 
 .reveal {
@@ -252,6 +280,7 @@ body {
   .ct-reveal, .ct-card-wait { opacity: 1; transform: none; transition: none; }
   .ct-card-in, .ct-fade { animation: none; }
   .marquee-track { animation: none; }
+  .reviews-marquee { overflow-x: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .word { opacity: 1; transform: none; }
   .border-glow::before { animation: none; }
