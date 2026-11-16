@@ -166,6 +166,20 @@ const ClinicalTeamSection = () => {
       (activeId === ALL || d.specialty === activeId) &&
       tokens.every((t) => searchText.get(d.name).includes(t))
   );
+  const visibleGroups =
+    activeId === ALL
+      ? [
+          ...filters.slice(1).map((filter) => ({
+            ...filter,
+            doctors: visible.filter((doctor) => doctor.specialty === filter.id),
+          })),
+          {
+            id: "clinical-team",
+            label: "Clinical Team",
+            doctors: visible.filter((doctor) => !specialtyById[doctor.specialty]),
+          },
+        ].filter((group) => group.doctors.length > 0)
+      : [{ id: activeId, label: activeFilter.label, doctors: visible }];
 
   const trimmedQuery = query.trim();
   const countText =
@@ -304,23 +318,45 @@ const ClinicalTeamSection = () => {
         {/* ── Doctor cards ─────────────────────────────────── */}
         <div ref={gridRef} className="mt-8 min-h-[220px]">
           {visible.length > 0 ? (
-            <ul
-              key={activeId}
-              className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 min-[75rem]:grid-cols-3 min-[75rem]:gap-6"
-            >
-              {visible.map((doctor, index) => (
-                <li
-                  key={doctor.name}
-                  className={gridIn ? "ct-card-in" : "ct-card-wait"}
-                  style={{
-                    "--ct-delay": `${Math.min(index, 8) * step}ms`,
-                    "--ct-dur": duration,
-                  }}
+            <div className="space-y-8">
+              {visibleGroups.map((group) => (
+                <section
+                  key={group.id}
+                  aria-labelledby={activeId === ALL ? `specialty-${group.id}-heading` : undefined}
                 >
-                  <DoctorCard doctor={doctor} />
-                </li>
+                  {activeId === ALL && (
+                    <div className="mb-4 flex items-center justify-between gap-4 border-b border-[#DFEAE6] pb-3">
+                      <h4
+                        id={`specialty-${group.id}-heading`}
+                        className="ct-display text-[16px] font-semibold text-[#152B28] md:text-[18px]"
+                      >
+                        {group.label}
+                      </h4>
+                      <span className="shrink-0 rounded-full bg-[#E8F5F0] px-3 py-1 text-[12px] font-semibold text-[#006B57]">
+                        {group.doctors.length}
+                      </span>
+                    </div>
+                  )}
+                  <ul
+                    key={`${activeId}-${group.id}`}
+                    className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5"
+                  >
+                    {group.doctors.map((doctor, index) => (
+                      <li
+                        key={doctor.name}
+                        className={gridIn ? "ct-card-in" : "ct-card-wait"}
+                        style={{
+                          "--ct-delay": `${Math.min(index, 8) * step}ms`,
+                          "--ct-dur": duration,
+                        }}
+                      >
+                        <DoctorCard doctor={doctor} />
+                      </li>
+                    ))}
+                  </ul>
+                </section>
               ))}
-            </ul>
+            </div>
           ) : (
             <div className="ct-fade rounded-[18px] border border-dashed border-[#CFDFDA] bg-white px-6 py-12 text-center">
               <p className="ct-display text-[18px] font-semibold text-[#152B28]">

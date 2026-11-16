@@ -1,9 +1,10 @@
+import { useState } from "react";
 import HeroSection from "../components/home/HeroSection";
 import QuickServicesSection from "../components/home/QuickServicesSection";
 import BenefitsSection from "../components/home/BenefitsSection";
 import WhyChooseUsBanner from "../components/home/WhyChooseUsBanner";
 import ClinicalTeamSection from "../components/home/ClinicalTeamSection";
-import MediaCoverageSection from "../components/home/MediaCoverageSection";
+import MediaCoveragePopup from "../components/home/MediaCoveragePopup";
 import VideoTestimonialsSection from "../components/home/VideoTestimonialsSection";
 import StatsSection from "../components/home/StatsSection";
 import GoogleReviewsSection from "../components/home/GoogleReviewsSection";
@@ -16,6 +17,8 @@ import HomeCtaSection from "../components/home/HomeCtaSection";
 import Seo from "../components/common/Seo";
 
 export default function Home() {
+  const [mediaCoverageOpen, setMediaCoverageOpen] = useState(false);
+
   return (
     <div className="bg-[#fafbf9] text-[#1a1a1a]">
       <Seo
@@ -28,8 +31,11 @@ export default function Home() {
       <BenefitsSection />
       <WhyChooseUsBanner />
       <ClinicalTeamSection />
-      <MediaCoverageSection />
-      <VideoTestimonialsSection />
+      <VideoTestimonialsSection onAutoPopupClose={() => setMediaCoverageOpen(true)} />
+      <MediaCoveragePopup
+        open={mediaCoverageOpen}
+        onClose={() => setMediaCoverageOpen(false)}
+      />
       <StatsSection />
       <GoogleReviewsSection />
       <MedicalEquipmentSection />

@@ -9,7 +9,15 @@ import { X } from "lucide-react";
  * - Locks body scroll while open.
  * - Moves focus into the dialog when it opens.
  */
-const Modal = ({ open, onClose, title, children, labelledBy, widthClass = "max-w-2xl" }) => {
+const Modal = ({
+  open,
+  onClose,
+  title,
+  children,
+  labelledBy,
+  widthClass = "max-w-2xl",
+  roundedClass = "rounded-[20px]",
+}) => {
   const dialogRef = useRef(null);
 
   useEffect(() => {
@@ -45,7 +53,7 @@ const Modal = ({ open, onClose, title, children, labelledBy, widthClass = "max-w
         aria-modal="true"
         aria-labelledby={labelledBy}
         tabIndex={-1}
-        className={`relative w-full ${widthClass} max-h-[88vh] overflow-y-auto rounded-[20px] bg-white shadow-2xl outline-none`}
+        className={`relative w-full ${widthClass} max-h-[88vh] overflow-y-auto ${roundedClass} bg-white shadow-2xl outline-none`}
       >
         <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-gray-100 bg-white/95 px-5 py-4 backdrop-blur">
           {title ? (

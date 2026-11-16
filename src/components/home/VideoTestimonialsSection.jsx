@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Play } from "lucide-react";
 import { videoTestimonials } from "../../data/videoTestimonials";
 import { mediaVideos } from "../../data/mediaVideos";
@@ -23,19 +23,34 @@ const testimonials = allVideos.filter((item) => item.type === "testimonial");
 const availableTypes = [...new Set(allVideos.map((item) => item.type))];
 const featuredTestimonial = testimonials[0];
 
-const VideoTestimonialsSection = () => {
+const VideoTestimonialsSection = ({ onAutoPopupClose }) => {
   const [filter, setFilter] = useState("all");
   const [activeVideo, setActiveVideo] = useState(null);
+  const [isAutoPopup, setIsAutoPopup] = useState(false);
+  const manuallyOpenedVideo = useRef(false);
 
   useEffect(() => {
     if (!featuredTestimonial) return undefined;
 
     const timer = window.setTimeout(() => {
-      setActiveVideo((currentVideo) => currentVideo || featuredTestimonial);
+      if (manuallyOpenedVideo.current) return;
+      setIsAutoPopup(true);
+      setActiveVideo(featuredTestimonial);
     }, 2500);
 
     return () => window.clearTimeout(timer);
   }, []);
+
+  const openVideo = (item) => {
+    manuallyOpenedVideo.current = true;
+    setActiveVideo(item);
+  };
+
+  const closeVideo = () => {
+    setActiveVideo(null);
+    if (isAutoPopup) onAutoPopupClose?.();
+    setIsAutoPopup(false);
+  };
 
   const visibleVideos = useMemo(
     () => (filter === "all" ? allVideos : allVideos.filter((v) => v.type === filter)),
@@ -76,7 +91,7 @@ const VideoTestimonialsSection = () => {
             >
               <button
                 type="button"
-                onClick={() => setActiveVideo(item)}
+                onClick={() => openVideo(item)}
                 aria-label={`Play video: ${item.title}`}
                 className="group relative block w-full"
               >
@@ -112,10 +127,11 @@ const VideoTestimonialsSection = () => {
 
       <Modal
         open={!!activeVideo}
-        onClose={() => setActiveVideo(null)}
+        onClose={closeVideo}
         title={activeVideo?.title}
         labelledBy="video-modal-title"
         widthClass="max-w-md"
+        roundedClass="rounded-none"
       >
         {activeVideo?.video && (
           <>
@@ -141,7 +157,7 @@ const VideoTestimonialsSection = () => {
                     <button
                       key={item.video}
                       type="button"
-                      onClick={() => setActiveVideo(item)}
+                      onClick={() => openVideo(item)}
                       aria-label={`Play patient testimonial ${index + 1}`}
                       aria-pressed={activeVideo.video === item.video}
                       className={`group relative w-20 shrink-0 overflow-hidden rounded-lg border-2 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0d7055] ${
