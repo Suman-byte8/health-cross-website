@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Play } from "lucide-react";
 import { videoTestimonials } from "../../data/videoTestimonials";
 import { mediaVideos } from "../../data/mediaVideos";
@@ -19,11 +19,23 @@ const FILTER_LABELS = {
 // filler card is shown alongside actual content.
 const rawVideos = [...videoTestimonials, ...mediaVideos];
 const allVideos = rawVideos.filter((item) => item.video && !item.placeholder);
+const testimonials = allVideos.filter((item) => item.type === "testimonial");
 const availableTypes = [...new Set(allVideos.map((item) => item.type))];
+const featuredTestimonial = testimonials[0];
 
 const VideoTestimonialsSection = () => {
   const [filter, setFilter] = useState("all");
   const [activeVideo, setActiveVideo] = useState(null);
+
+  useEffect(() => {
+    if (!featuredTestimonial) return undefined;
+
+    const timer = window.setTimeout(() => {
+      setActiveVideo((currentVideo) => currentVideo || featuredTestimonial);
+    }, 2500);
+
+    return () => window.clearTimeout(timer);
+  }, []);
 
   const visibleVideos = useMemo(
     () => (filter === "all" ? allVideos : allVideos.filter((v) => v.type === filter)),
@@ -73,10 +85,10 @@ const VideoTestimonialsSection = () => {
                     src={item.thumbnail}
                     alt={item.title}
                     loading="lazy"
-                    className="aspect-[3/4] w-full object-cover transition duration-500 group-hover:scale-105"
+                    className="aspect-[9/16] w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                 ) : (
-                  <PlaceholderMedia label="Preview coming soon" aspect="aspect-[3/4]" />
+                  <PlaceholderMedia label="Preview coming soon" aspect="aspect-[9/16]" />
                 )}
                 <span className="absolute inset-0 flex items-center justify-center">
                   <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-[#0d7055] shadow-lg transition group-hover:scale-110">
@@ -103,20 +115,56 @@ const VideoTestimonialsSection = () => {
         onClose={() => setActiveVideo(null)}
         title={activeVideo?.title}
         labelledBy="video-modal-title"
-        widthClass="max-w-2xl"
+        widthClass="max-w-md"
       >
         {activeVideo?.video && (
-          <div className="aspect-video w-full overflow-hidden rounded-[14px] bg-black">
-            <video
-              key={activeVideo.video}
-              src={activeVideo.video}
-              controls
-              preload="none"
-              className="h-full w-full"
-            >
-              Your browser does not support embedded video.
-            </video>
-          </div>
+          <>
+            <div className="mx-auto aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-[14px] bg-black">
+              <video
+                key={activeVideo.video}
+                src={activeVideo.video}
+                controls
+                autoPlay
+                muted
+                playsInline
+                preload="none"
+                className="h-full w-full"
+              >
+                Your browser does not support embedded video.
+              </video>
+            </div>
+            {testimonials.length > 1 && (
+              <div className="mt-5">
+                <h4 className="mb-3 text-sm font-bold text-[#1a1a1a]">More patient stories</h4>
+                <div className="flex gap-3 overflow-x-auto pb-2">
+                  {testimonials.map((item, index) => (
+                    <button
+                      key={item.video}
+                      type="button"
+                      onClick={() => setActiveVideo(item)}
+                      aria-label={`Play patient testimonial ${index + 1}`}
+                      aria-pressed={activeVideo.video === item.video}
+                      className={`group relative w-20 shrink-0 overflow-hidden rounded-lg border-2 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0d7055] ${
+                        activeVideo.video === item.video
+                          ? "border-[#0d7055]"
+                          : "border-transparent hover:border-[#0d7055]/50"
+                      }`}
+                    >
+                      <img
+                        src={item.thumbnail}
+                        alt=""
+                        loading="lazy"
+                        className="aspect-[9/16] w-full object-cover"
+                      />
+                      <span className="absolute inset-0 flex items-center justify-center bg-black/20 text-white transition group-hover:bg-black/35">
+                        <Play className="h-5 w-5 fill-current" />
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
         )}
       </Modal>
     </section>
