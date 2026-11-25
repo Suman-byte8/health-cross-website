@@ -43,23 +43,23 @@ const LiveActivityBar = () => {
     <div
       role="status"
       aria-live="polite"
-      className={`fixed bottom-5 left-4 z-40 flex max-w-[calc(100vw-96px)] items-center gap-2.5 rounded-full border border-gray-200 bg-white py-2 pl-3 pr-2 shadow-lg transition-all duration-500 sm:left-6 ${
+      className={`fixed bottom-5 left-4 z-40 flex max-w-[calc(100vw-96px)] items-center gap-3 rounded-full border border-gray-200 bg-white py-3 pl-4 pr-2.5 shadow-lg transition-all duration-500 sm:left-6 ${
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"
       }`}
     >
-      <span className="relative flex h-2.5 w-2.5 shrink-0">
+      <span className="relative flex h-3 w-3 shrink-0">
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-        <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
+        <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500" />
       </span>
-      <span className="text-[10px] font-bold uppercase tracking-wider text-[#0d7055]">Live</span>
-      <span className="truncate text-xs font-semibold text-[#1a1a1a]">{text}</span>
+      <span className="text-xs font-bold uppercase tracking-wider text-[#0d7055]">Live</span>
+      <span className="truncate text-sm font-semibold text-[#1a1a1a]">{text}</span>
       <button
         type="button"
         onClick={() => setDismissed(true)}
         aria-label="Dismiss"
-        className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[#1a1a1a]/40 transition hover:bg-gray-100 hover:text-[#1a1a1a]"
+        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[#1a1a1a]/40 transition hover:bg-gray-100 hover:text-[#1a1a1a]"
       >
-        <X className="h-3.5 w-3.5" />
+        <X className="h-4 w-4" />
       </button>
     </div>
   );
