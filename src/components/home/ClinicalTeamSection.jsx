@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, Building2, Check, MapPin, Search, X } from "lucide-react";
-import { careCoordinators, doctors, specialties } from "../../data/doctors";
+import { managementTeam, doctors, specialties } from "../../data/doctors";
 
 // Contact details already used across the site (HomeCtaSection,
 // ContactSection). The directory only links into these existing channels;
@@ -388,15 +388,15 @@ const ClinicalTeamSection = () => {
           )}
         </div>
 
-        {/* ── Clinical coordination (not a specialty filter) ── */}
-        {careCoordinators.length > 0 && (
+        {/* ── Management (not a specialty filter) ── */}
+        {managementTeam.length > 0 && (
           <div className="relative mt-12 overflow-hidden rounded-[18px] border border-[#006B57]/10 bg-[#E8F5F0] px-6 py-6 before:absolute before:inset-y-0 before:left-0 before:w-[3px] before:bg-[#006B57] md:mt-14 md:flex md:items-center md:gap-10 md:px-9 md:py-7">
             <h3 className="text-[11.5px] font-semibold uppercase tracking-[0.16em] text-[#006B57] md:w-[200px] md:shrink-0">
-              Clinical Coordination
+              Management
             </h3>
             <span aria-hidden="true" className="hidden h-11 w-px shrink-0 bg-[#006B57]/20 md:block" />
             <ul className="mt-3 flex flex-wrap gap-x-12 gap-y-4 md:mt-0">
-              {careCoordinators.map((person) => (
+              {managementTeam.map((person) => (
                 <li key={person.name}>
                   <h4 className="ct-display text-[19px] font-semibold leading-tight text-[#152B28]">
                     {person.name}

@@ -51,6 +51,18 @@ export const doctors = [
     qualifications: ["MD Chest Medicine"],
   },
   {
+    name: "Dr. Kohena Roy",
+    specialty: "pulmonology",
+    designation: "Pulmonologist",
+    qualifications: ["MD Chest Medicine"],
+  },
+  {
+    name: "Dr. Inayet Kabir",
+    specialty: "general-medicine",
+    specialtyLabel: "General Physician",
+    designation: "Critical Care Clinical Coordinator",
+  },
+  {
     name: "Dr. Rupam Paul",
     specialty: "general-medicine",
     specialtyLabel: "General Physician",
@@ -63,6 +75,7 @@ export const doctors = [
     specialty: "general-medicine",
     designation: "Critical Care Expert",
     qualifications: ["MBBS", "MD", "CCEBDM"],
+    serviceArea: "Home Visit Expert",
   },
   {
     name: "Dr. Sumalay Kar",
@@ -74,10 +87,10 @@ export const doctors = [
     ],
   },
   {
-    // Specialty designation not yet confirmed by the client. Set
-    // `specialty: "general-medicine"` once it is.
     name: "Dr. Sayantan Debnath",
-    specialty: null,
+    specialty: "general-medicine",
+    specialtyLabel: "General Physician",
+    designation: "General Physician",
     qualifications: ["MBBS", "MD", "CCEBDM", "MRCP 1"],
   },
   {
@@ -105,9 +118,8 @@ export const doctors = [
   },
 ];
 
-// Care-coordination staff. Shown in their own panel below the directory and
-// deliberately kept out of the specialty filters (not a medical specialty).
-export const careCoordinators = [
-  { name: "Dr. Inayat Kabir", role: "Clinical Coordinator" },
-  { name: "Biki Saha", role: "Critical Care Clinical Coordinator" },
+// Non-clinical management staff. Shown in their own panel below the directory
+// and deliberately kept out of the specialty filters (not a medical specialty).
+export const managementTeam = [
+  { name: "Biki Saha", role: "Executive Management" },
 ];
