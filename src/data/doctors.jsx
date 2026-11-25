@@ -36,6 +36,11 @@ export const specialties = [
   { id: "gastroenterology", label: "Gastroenterology" },
   { id: "dentistry", label: "Dentistry", aliases: ["dental"] },
   { id: "pediatrics", label: "Pediatrics", aliases: ["paediatrics", "paediatrician"] },
+  {
+    id: "gynaecology",
+    label: "Gynaecology",
+    aliases: ["gynecology", "gynecologist", "obstetrics", "infertility", "ivf"],
+  },
 ];
 
 export const doctors = [
@@ -58,6 +63,15 @@ export const doctors = [
     specialty: "general-medicine",
     designation: "Critical Care Expert",
     qualifications: ["MBBS", "MD", "CCEBDM"],
+  },
+  {
+    name: "Dr. Sumalay Kar",
+    specialty: "general-medicine",
+    designation: "Senior Consultant Physician",
+    qualifications: [
+      "M.B.B.S. (Cal)",
+      "Post Graduate Diploma in Diabetic Management (Middlesex University)",
+    ],
   },
   {
     // Specialty designation not yet confirmed by the client. Set
@@ -83,6 +97,12 @@ export const doctors = [
   { name: "Dr. Shahid Aziz", specialty: "gastroenterology", designation: "Gastroenterologist" },
   { name: "Dr. Neha Shabnam", specialty: "dentistry", designation: "Consultant Dentist" },
   { name: "Dr. Priyadarshini Sannigrahi", specialty: "pediatrics", designation: "Pediatrician" },
+  {
+    name: "Dr. Khooshboo Agarwal",
+    specialty: "gynaecology",
+    designation: "Gynaecologist",
+    qualifications: ["MBBS", "MS (O & G)", "Trained in Infertility & IVF"],
+  },
 ];
 
 // Care-coordination staff. Shown in their own panel below the directory and
