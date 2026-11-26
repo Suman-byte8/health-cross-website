@@ -106,7 +106,7 @@ export const doctors = [
     qualifications: ["DM (Cardiology)"],
   },
   { name: "Dr. Kity Sarkar", specialty: "nephrology", designation: "Nephrologist" },
-  { name: "Dr. Anirban Palik", specialty: "nephrology", designation: "Nephrologist" },
+  { name: "Dr. Anirban Palit", specialty: "nephrology", designation: "Nephrologist" },
   { name: "Dr. Shahid Aziz", specialty: "gastroenterology", designation: "Gastroenterologist" },
   { name: "Dr. Neha Shabnam", specialty: "dentistry", designation: "Consultant Dentist" },
   { name: "Dr. Priyadarshini Sannigrahi", specialty: "pediatrics", designation: "Pediatrician" },
