@@ -57,6 +57,13 @@ export const doctors = [
     qualifications: ["MD Chest Medicine"],
   },
   {
+    name: "Dr. Subhendu Mallick",
+    specialty: "pulmonology",
+    designation: "Associate Consultant Pulmonologist",
+    qualifications: ["MBBS", "MD (Respiratory Medicine)"],
+    hospital: "Calcutta Heart Clinic and Hospital",
+  },
+  {
     name: "Dr. Inayet Kabir",
     specialty: "general-medicine",
     specialtyLabel: "General Physician",
